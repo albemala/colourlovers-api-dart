@@ -1,23 +1,24 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/color.dart';
 import 'package:colourlovers_api/converters.dart';
+import 'package:colourlovers_api/pattern.dart';
 
-part "colors-service.chopper.dart";
+part "patterns_service.chopper.dart";
 
-@ChopperApi(baseUrl: "/colors")
-abstract class ColorsService extends ChopperService {
-  static ColorsService create([ChopperClient? client]) => _$ColorsService(client);
+@ChopperApi(baseUrl: "/patterns")
+abstract class PatternsService extends ChopperService {
+  static PatternsService create([ChopperClient? client]) => _$PatternsService(client);
 
   @FactoryConverter(
     response: _allItems,
   )
   @Get(path: "/")
-  Future<Response<List<ClColor>>> getColors(
+  Future<Response<List<ClPattern>>> getPatterns(
     @Query() String lover,
-    @Query() String hueRange,
-    @Query() String briRange,
+    @Query() String hueOption,
+    @Query() String hex,
+    @Query() String hexLogic,
     @Query() String keywords,
     @Query() int keywordExact,
     @Query() String orderCol,
@@ -31,10 +32,11 @@ abstract class ColorsService extends ChopperService {
     response: _allItems,
   )
   @Get(path: "/new")
-  Future<Response<List<ClColor>>> getNewColors(
+  Future<Response<List<ClPattern>>> getNewPatterns(
     @Query() String lover,
-    @Query() String hueRange,
-    @Query() String briRange,
+    @Query() String hueOption,
+    @Query() String hex,
+    @Query() String hexLogic,
     @Query() String keywords,
     @Query() int keywordExact,
     @Query() String sortBy,
@@ -47,10 +49,11 @@ abstract class ColorsService extends ChopperService {
     response: _allItems,
   )
   @Get(path: "/top")
-  Future<Response<List<ClColor>>> getTopColors(
+  Future<Response<List<ClPattern>>> getTopPatterns(
     @Query() String lover,
-    @Query() String hueRange,
-    @Query() String briRange,
+    @Query() String hueOption,
+    @Query() String hex,
+    @Query() String hexLogic,
     @Query() String keywords,
     @Query() int keywordExact,
     @Query() String sortBy,
@@ -63,15 +66,29 @@ abstract class ColorsService extends ChopperService {
     response: _firstItem,
   )
   @Get(path: "/random")
-  Future<Response<ClColor>> getRandomColor(
+  Future<Response<ClPattern>> getRandomPattern(
+    @Query() String format,
+  );
+}
+
+@ChopperApi(baseUrl: "/pattern")
+abstract class PatternService extends ChopperService {
+  static PatternService create([ChopperClient? client]) => _$PatternService(client);
+
+  @FactoryConverter(
+    response: _firstItem,
+  )
+  @Get(path: "/{id}")
+  Future<Response<ClPattern>> getPattern(
+    @Path() String id,
     @Query() String format,
   );
 }
 
 Response _firstItem<T>(Response response) {
-  return firstItem(response, ClColor.fromJson);
+  return firstItem(response, ClPattern.fromJson);
 }
 
 Response _allItems<T>(Response response) {
-  return allItems(response, ClColor.fromJson);
+  return allItems(response, ClPattern.fromJson);
 }

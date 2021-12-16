@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'colors-service.dart';
+part of 'colors_service.dart';
 
 // **************************************************************************
 // ChopperGenerator
@@ -105,6 +105,26 @@ class _$ColorsService extends ColorsService {
   @override
   Future<Response<ClColor>> getRandomColor(String format) {
     final $url = '/colors/random';
+    final $params = <String, dynamic>{'format': format};
+    final $request = Request('GET', $url, client.baseUrl, parameters: $params);
+    return client.send<ClColor, ClColor>($request,
+        responseConverter: _firstItem);
+  }
+}
+
+// ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations
+class _$ColorService extends ColorService {
+  _$ColorService([ChopperClient? client]) {
+    if (client == null) return;
+    this.client = client;
+  }
+
+  @override
+  final definitionType = ColorService;
+
+  @override
+  Future<Response<ClColor>> getColor(String hex, String format) {
+    final $url = '/color/${hex}';
     final $params = <String, dynamic>{'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
     return client.send<ClColor, ClColor>($request,
