@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/converters.dart';
-import 'package:colourlovers_api/palette.dart';
+import 'converters.dart';
+import 'palette.dart';
 
-part "palettes_service.chopper.dart";
+part 'palettes_service.chopper.dart';
 
 @ChopperApi(baseUrl: "/palettes")
 abstract class PalettesService extends ChopperService {

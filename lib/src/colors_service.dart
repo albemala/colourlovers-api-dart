@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/color.dart';
-import 'package:colourlovers_api/converters.dart';
+import 'color.dart';
+import 'converters.dart';
 
-part "colors_service.chopper.dart";
+part 'colors_service.chopper.dart';
 
 @ChopperApi(baseUrl: "/colors")
 abstract class ColorsService extends ChopperService {

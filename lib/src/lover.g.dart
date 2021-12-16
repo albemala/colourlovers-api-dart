@@ -8,12 +8,8 @@ part of 'lover.dart';
 
 ClLover _$ClLoverFromJson(Map<String, dynamic> json) => ClLover(
       userName: json['userName'] as String?,
-      dateRegistered: json['dateRegistered'] == null
-          ? null
-          : DateTime.parse(json['dateRegistered'] as String),
-      dateLastActive: json['dateLastActive'] == null
-          ? null
-          : DateTime.parse(json['dateLastActive'] as String),
+      dateRegistered: json['dateRegistered'] == null ? null : DateTime.parse(json['dateRegistered'] as String),
+      dateLastActive: json['dateLastActive'] == null ? null : DateTime.parse(json['dateLastActive'] as String),
       rating: json['rating'] as int?,
       location: json['location'] as String?,
       numColors: json['numColors'] as int?,

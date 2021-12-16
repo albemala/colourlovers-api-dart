@@ -18,6 +18,7 @@ class ClLover {
   List<dynamic>? comments;
   String? url;
   String? apiUrl;
+
   ClLover({
     this.userName,
     this.dateRegistered,

@@ -15,16 +15,10 @@ ClColor _$ClColorFromJson(Map<String, dynamic> json) => ClColor(
       numComments: json['numComments'] as int?,
       numHearts: (json['numHearts'] as num?)?.toDouble(),
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null
-          ? null
-          : DateTime.parse(json['dateCreated'] as String),
+      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
       hex: json['hex'] as String?,
-      rgb: json['rgb'] == null
-          ? null
-          : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
-      hsv: json['hsv'] == null
-          ? null
-          : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
+      rgb: json['rgb'] == null ? null : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
+      hsv: json['hsv'] == null ? null : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,

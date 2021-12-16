@@ -1,17 +1,18 @@
 import 'dart:io';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/color.dart';
-import 'package:colourlovers_api/colors_service.dart';
-import 'package:colourlovers_api/lover.dart';
-import 'package:colourlovers_api/lovers_service.dart';
-import 'package:colourlovers_api/palette.dart';
-import 'package:colourlovers_api/palettes_service.dart';
-import 'package:colourlovers_api/parameters.dart';
-import 'package:colourlovers_api/pattern.dart';
-import 'package:colourlovers_api/patterns_service.dart';
-import 'package:colourlovers_api/stats.dart';
-import 'package:colourlovers_api/stats_service.dart';
+
+import 'color.dart';
+import 'colors_service.dart';
+import 'lover.dart';
+import 'lovers_service.dart';
+import 'palette.dart';
+import 'palettes_service.dart';
+import 'parameters.dart';
+import 'pattern.dart';
+import 'patterns_service.dart';
+import 'stats.dart';
+import 'stats_service.dart';
 
 class ClClient {
   /*
@@ -26,8 +27,8 @@ class ClClient {
     int brightnessMax = 99,
     String keywords = "",
     bool keywordExact = false,
-    RequestOrderBy orderBy = RequestOrderBy.dateCreated,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -48,7 +49,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -61,7 +62,7 @@ class ClClient {
     int brightnessMax = 99,
     String keywords = "",
     bool keywordExact = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -75,7 +76,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -88,7 +89,7 @@ class ClClient {
     int brightnessMax = 99,
     String keywords = "",
     bool keywordExact = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -102,7 +103,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -110,7 +111,7 @@ class ClClient {
   Future<ClColor?> getRandomColor() async {
     return _callClient<ClColor?, ColorsService>(
       (service) => service.getRandomColor(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -125,7 +126,7 @@ class ClClient {
     return _callClient<ClColor?, ColorService>(
       (service) => service.getColor(
         hex,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -136,14 +137,14 @@ class ClClient {
 
   Future<List<ClPalette>?> getPalettes({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    RequestOrderBy orderBy = RequestOrderBy.dateCreated,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -160,20 +161,20 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClPalette>?> getNewPalettes({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -189,20 +190,20 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClPalette>?> getTopPalettes({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -218,7 +219,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -226,7 +227,7 @@ class ClClient {
   Future<ClPalette?> getRandomPalette() async {
     return _callClient<ClPalette?, PalettesService>(
       (service) => service.getRandomPalette(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -239,7 +240,7 @@ class ClClient {
       (service) => service.getPalette(
         id.toString(),
         showPaletteWidths ? 1 : 0,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -250,13 +251,13 @@ class ClClient {
 
   Future<List<ClPattern>?> getPatterns({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
-    RequestOrderBy orderBy = RequestOrderBy.dateCreated,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -272,19 +273,19 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClPattern>?> getNewPatterns({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -299,19 +300,19 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClPattern>?> getTopPatterns({
     String lover = "",
-    List<RequestHueRange> hueRanges = const [],
+    List<ClRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    RequestHexLogic hexLogic = RequestHexLogic.AND,
+    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
     String keywords = "",
     bool keywordExact = false,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -326,7 +327,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -334,7 +335,7 @@ class ClClient {
   Future<ClPattern?> getRandomPattern() async {
     return _callClient<ClPattern?, PatternsService>(
       (service) => service.getRandomPattern(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -345,7 +346,7 @@ class ClClient {
     return _callClient<ClPattern?, PatternService>(
       (service) => service.getPattern(
         id.toString(),
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -355,8 +356,8 @@ class ClClient {
   */
 
   Future<List<ClLover>?> getLovers({
-    RequestOrderBy orderBy = RequestOrderBy.dateCreated,
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -366,13 +367,13 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClLover>?> getNewLovers({
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -381,13 +382,13 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
 
   Future<List<ClLover>?> getTopLovers({
-    RequestSortBy sortBy = RequestSortBy.ASC,
+    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
@@ -396,7 +397,7 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -409,7 +410,7 @@ class ClClient {
       (service) => service.getLover(
         userName,
         withComments ? 1 : 0,
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -421,7 +422,7 @@ class ClClient {
   Future<ClStats?> getColorStats() {
     return _callClient<ClStats, StatsService>(
       (service) => service.getColorStats(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -429,7 +430,7 @@ class ClClient {
   Future<ClStats?> getPaletteStats() {
     return _callClient<ClStats, StatsService>(
       (service) => service.getPaletteStats(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -437,7 +438,7 @@ class ClClient {
   Future<ClStats?> getPatternStats() {
     return _callClient<ClStats, StatsService>(
       (service) => service.getPatternStats(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }
@@ -445,7 +446,7 @@ class ClClient {
   Future<ClStats?> getLoverStats() {
     return _callClient<ClStats, StatsService>(
       (service) => service.getLoverStats(
-        RequestFormat.json.name,
+        ClRequestFormat.json.name,
       ),
     );
   }

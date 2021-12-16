@@ -46,8 +46,7 @@ class _$PalettesService extends PalettesService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClPalette>, ClPalette>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPalette>, ClPalette>($request, responseConverter: _allItems);
   }
 
   @override
@@ -78,8 +77,7 @@ class _$PalettesService extends PalettesService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClPalette>, ClPalette>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPalette>, ClPalette>($request, responseConverter: _allItems);
   }
 
   @override
@@ -110,8 +108,7 @@ class _$PalettesService extends PalettesService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClPalette>, ClPalette>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPalette>, ClPalette>($request, responseConverter: _allItems);
   }
 
   @override
@@ -119,8 +116,7 @@ class _$PalettesService extends PalettesService {
     final $url = '/palettes/random';
     final $params = <String, dynamic>{'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<ClPalette, ClPalette>($request,
-        responseConverter: _firstItem);
+    return client.send<ClPalette, ClPalette>($request, responseConverter: _firstItem);
   }
 }
 
@@ -135,15 +131,10 @@ class _$PaletteService extends PaletteService {
   final definitionType = PaletteService;
 
   @override
-  Future<Response<ClPalette>> getPalette(
-      String id, int showPaletteWidths, String format) {
+  Future<Response<ClPalette>> getPalette(String id, int showPaletteWidths, String format) {
     final $url = '/palette/${id}';
-    final $params = <String, dynamic>{
-      'showPaletteWidths': showPaletteWidths,
-      'format': format
-    };
+    final $params = <String, dynamic>{'showPaletteWidths': showPaletteWidths, 'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<ClPalette, ClPalette>($request,
-        responseConverter: _firstItem);
+    return client.send<ClPalette, ClPalette>($request, responseConverter: _firstItem);
   }
 }

@@ -1,10 +1,10 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/converters.dart';
-import 'package:colourlovers_api/lover.dart';
+import 'converters.dart';
+import 'lover.dart';
 
-part "lovers_service.chopper.dart";
+part 'lovers_service.chopper.dart';
 
 @ChopperApi(baseUrl: "/lovers")
 abstract class LoversService extends ChopperService {

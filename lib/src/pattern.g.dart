@@ -15,19 +15,14 @@ ClPattern _$ClPatternFromJson(Map<String, dynamic> json) => ClPattern(
       numComments: json['numComments'] as int?,
       numHearts: json['numHearts'] as int?,
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null
-          ? null
-          : DateTime.parse(json['dateCreated'] as String),
-      colors:
-          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
+      colors: (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,
       badgeUrl: json['badgeUrl'] as String?,
       apiUrl: json['apiUrl'] as String?,
-      template: json['template'] == null
-          ? null
-          : ClTemplate.fromJson(json['template'] as Map<String, dynamic>),
+      template: json['template'] == null ? null : ClTemplate.fromJson(json['template'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$ClPatternToJson(ClPattern instance) => <String, dynamic>{
@@ -52,13 +47,10 @@ Map<String, dynamic> _$ClPatternToJson(ClPattern instance) => <String, dynamic>{
 ClTemplate _$ClTemplateFromJson(Map<String, dynamic> json) => ClTemplate(
       title: json['title'] as String?,
       url: json['url'] as String?,
-      author: json['author'] == null
-          ? null
-          : ClAuthor.fromJson(json['author'] as Map<String, dynamic>),
+      author: json['author'] == null ? null : ClAuthor.fromJson(json['author'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ClTemplateToJson(ClTemplate instance) =>
-    <String, dynamic>{
+Map<String, dynamic> _$ClTemplateToJson(ClTemplate instance) => <String, dynamic>{
       'title': instance.title,
       'url': instance.url,
       'author': instance.author,

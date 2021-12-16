@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'package:colourlovers_api/stats.dart';
+import 'stats.dart';
 
-part "stats_service.chopper.dart";
+part 'stats_service.chopper.dart';
 
 @ChopperApi(baseUrl: "/stats")
 abstract class StatsService extends ChopperService {

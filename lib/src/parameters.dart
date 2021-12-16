@@ -1,9 +1,9 @@
-enum RequestFormat {
+enum ClRequestFormat {
   json,
   xml,
 }
 
-enum RequestOrderBy {
+enum ClRequestOrderBy {
   dateCreated,
   score,
   name,
@@ -11,12 +11,12 @@ enum RequestOrderBy {
   numViews,
 }
 
-enum RequestSortBy {
+enum ClRequestSortBy {
   ASC,
   DESC,
 }
 
-enum RequestHueRange {
+enum ClRequestHueRange {
   red,
   orange,
   yellow,
@@ -27,7 +27,7 @@ enum RequestHueRange {
   fuchsia,
 }
 
-enum RequestHexLogic {
+enum ClRequestHexLogic {
   AND,
   OR,
 }

@@ -15,14 +15,9 @@ ClPalette _$ClPaletteFromJson(Map<String, dynamic> json) => ClPalette(
       numComments: json['numComments'] as int?,
       numHearts: (json['numHearts'] as num?)?.toDouble(),
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null
-          ? null
-          : DateTime.parse(json['dateCreated'] as String),
-      colors:
-          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      colorWidths: (json['colorWidths'] as List<dynamic>?)
-          ?.map((e) => (e as num).toDouble())
-          .toList(),
+      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
+      colors: (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      colorWidths: (json['colorWidths'] as List<dynamic>?)?.map((e) => (e as num).toDouble()).toList(),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,

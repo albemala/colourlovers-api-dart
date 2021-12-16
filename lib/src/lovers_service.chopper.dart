@@ -17,8 +17,8 @@ class _$LoversService extends LoversService {
   final definitionType = LoversService;
 
   @override
-  Future<Response<List<ClLover>>> getLovers(String orderCol, String sortBy,
-      int numResults, int resultOffset, String format) {
+  Future<Response<List<ClLover>>> getLovers(
+      String orderCol, String sortBy, int numResults, int resultOffset, String format) {
     final $url = '/lovers/';
     final $params = <String, dynamic>{
       'orderCol': orderCol,
@@ -28,13 +28,11 @@ class _$LoversService extends LoversService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClLover>, ClLover>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClLover>, ClLover>($request, responseConverter: _allItems);
   }
 
   @override
-  Future<Response<List<ClLover>>> getNewLovers(
-      String sortBy, int numResults, int resultOffset, String format) {
+  Future<Response<List<ClLover>>> getNewLovers(String sortBy, int numResults, int resultOffset, String format) {
     final $url = '/lovers/new';
     final $params = <String, dynamic>{
       'sortBy': sortBy,
@@ -43,13 +41,11 @@ class _$LoversService extends LoversService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClLover>, ClLover>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClLover>, ClLover>($request, responseConverter: _allItems);
   }
 
   @override
-  Future<Response<List<ClLover>>> getTopLovers(
-      String sortBy, int numResults, int resultOffset, String format) {
+  Future<Response<List<ClLover>>> getTopLovers(String sortBy, int numResults, int resultOffset, String format) {
     final $url = '/lovers/top';
     final $params = <String, dynamic>{
       'sortBy': sortBy,
@@ -58,8 +54,7 @@ class _$LoversService extends LoversService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClLover>, ClLover>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClLover>, ClLover>($request, responseConverter: _allItems);
   }
 }
 
@@ -74,12 +69,10 @@ class _$LoverService extends LoverService {
   final definitionType = LoverService;
 
   @override
-  Future<Response<ClLover>> getLover(
-      String userName, int comments, String format) {
+  Future<Response<ClLover>> getLover(String userName, int comments, String format) {
     final $url = '/lover/${userName}';
     final $params = <String, dynamic>{'comments': comments, 'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<ClLover, ClLover>($request,
-        responseConverter: _firstItem);
+    return client.send<ClLover, ClLover>($request, responseConverter: _firstItem);
   }
 }

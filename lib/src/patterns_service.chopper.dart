@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'colors_service.dart';
+part of 'patterns_service.dart';
 
 // **************************************************************************
 // ChopperGenerator
 // **************************************************************************
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations
-class _$ColorsService extends ColorsService {
-  _$ColorsService([ChopperClient? client]) {
+class _$PatternsService extends PatternsService {
+  _$PatternsService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = ColorsService;
+  final definitionType = PatternsService;
 
   @override
-  Future<Response<List<ClColor>>> getColors(
+  Future<Response<List<ClPattern>>> getPatterns(
       String lover,
-      String hueRange,
-      String briRange,
+      String hueOption,
+      String hex,
+      String hexLogic,
       String keywords,
       int keywordExact,
       String orderCol,
@@ -28,11 +29,12 @@ class _$ColorsService extends ColorsService {
       int numResults,
       int resultOffset,
       String format) {
-    final $url = '/colors/';
+    final $url = '/patterns/';
     final $params = <String, dynamic>{
       'lover': lover,
-      'hueRange': hueRange,
-      'briRange': briRange,
+      'hueOption': hueOption,
+      'hex': hex,
+      'hexLogic': hexLogic,
       'keywords': keywords,
       'keywordExact': keywordExact,
       'orderCol': orderCol,
@@ -42,26 +44,18 @@ class _$ColorsService extends ColorsService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClColor>, ClColor>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPattern>, ClPattern>($request, responseConverter: _allItems);
   }
 
   @override
-  Future<Response<List<ClColor>>> getNewColors(
-      String lover,
-      String hueRange,
-      String briRange,
-      String keywords,
-      int keywordExact,
-      String sortBy,
-      int numResults,
-      int resultOffset,
-      String format) {
-    final $url = '/colors/new';
+  Future<Response<List<ClPattern>>> getNewPatterns(String lover, String hueOption, String hex, String hexLogic,
+      String keywords, int keywordExact, String sortBy, int numResults, int resultOffset, String format) {
+    final $url = '/patterns/new';
     final $params = <String, dynamic>{
       'lover': lover,
-      'hueRange': hueRange,
-      'briRange': briRange,
+      'hueOption': hueOption,
+      'hex': hex,
+      'hexLogic': hexLogic,
       'keywords': keywords,
       'keywordExact': keywordExact,
       'sortBy': sortBy,
@@ -70,26 +64,18 @@ class _$ColorsService extends ColorsService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClColor>, ClColor>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPattern>, ClPattern>($request, responseConverter: _allItems);
   }
 
   @override
-  Future<Response<List<ClColor>>> getTopColors(
-      String lover,
-      String hueRange,
-      String briRange,
-      String keywords,
-      int keywordExact,
-      String sortBy,
-      int numResults,
-      int resultOffset,
-      String format) {
-    final $url = '/colors/top';
+  Future<Response<List<ClPattern>>> getTopPatterns(String lover, String hueOption, String hex, String hexLogic,
+      String keywords, int keywordExact, String sortBy, int numResults, int resultOffset, String format) {
+    final $url = '/patterns/top';
     final $params = <String, dynamic>{
       'lover': lover,
-      'hueRange': hueRange,
-      'briRange': briRange,
+      'hueOption': hueOption,
+      'hex': hex,
+      'hexLogic': hexLogic,
       'keywords': keywords,
       'keywordExact': keywordExact,
       'sortBy': sortBy,
@@ -98,36 +84,33 @@ class _$ColorsService extends ColorsService {
       'format': format
     };
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<List<ClColor>, ClColor>($request,
-        responseConverter: _allItems);
+    return client.send<List<ClPattern>, ClPattern>($request, responseConverter: _allItems);
   }
 
   @override
-  Future<Response<ClColor>> getRandomColor(String format) {
-    final $url = '/colors/random';
+  Future<Response<ClPattern>> getRandomPattern(String format) {
+    final $url = '/patterns/random';
     final $params = <String, dynamic>{'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<ClColor, ClColor>($request,
-        responseConverter: _firstItem);
+    return client.send<ClPattern, ClPattern>($request, responseConverter: _firstItem);
   }
 }
 
 // ignore_for_file: always_put_control_body_on_new_line, always_specify_types, prefer_const_declarations
-class _$ColorService extends ColorService {
-  _$ColorService([ChopperClient? client]) {
+class _$PatternService extends PatternService {
+  _$PatternService([ChopperClient? client]) {
     if (client == null) return;
     this.client = client;
   }
 
   @override
-  final definitionType = ColorService;
+  final definitionType = PatternService;
 
   @override
-  Future<Response<ClColor>> getColor(String hex, String format) {
-    final $url = '/color/${hex}';
+  Future<Response<ClPattern>> getPattern(String id, String format) {
+    final $url = '/pattern/${id}';
     final $params = <String, dynamic>{'format': format};
     final $request = Request('GET', $url, client.baseUrl, parameters: $params);
-    return client.send<ClColor, ClColor>($request,
-        responseConverter: _firstItem);
+    return client.send<ClPattern, ClPattern>($request, responseConverter: _firstItem);
   }
 }
