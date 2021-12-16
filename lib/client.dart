@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:chopper/chopper.dart';
 import 'package:colourlovers_api/color.dart';
 import 'package:colourlovers_api/colors_service.dart';
@@ -8,6 +10,8 @@ import 'package:colourlovers_api/palettes_service.dart';
 import 'package:colourlovers_api/parameters.dart';
 import 'package:colourlovers_api/pattern.dart';
 import 'package:colourlovers_api/patterns_service.dart';
+import 'package:colourlovers_api/stats.dart';
+import 'package:colourlovers_api/stats_service.dart';
 
 class ClClient {
   /*
@@ -409,6 +413,42 @@ class ClClient {
       ),
     );
   }
+
+  /*
+  * Stats
+  */
+
+  Future<ClStats?> getColorStats() {
+    return _callClient<ClStats, StatsService>(
+      (service) => service.getColorStats(
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<ClStats?> getPaletteStats() {
+    return _callClient<ClStats, StatsService>(
+      (service) => service.getPaletteStats(
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<ClStats?> getPatternStats() {
+    return _callClient<ClStats, StatsService>(
+      (service) => service.getPatternStats(
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<ClStats?> getLoverStats() {
+    return _callClient<ClStats, StatsService>(
+      (service) => service.getLoverStats(
+        RequestFormat.json.name,
+      ),
+    );
+  }
 }
 
 Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
@@ -425,6 +465,7 @@ Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
       PatternService.create(),
       LoversService.create(),
       LoverService.create(),
+      StatsService.create(),
     ],
   );
   final service = chopper.getService<ServiceType>();
@@ -436,7 +477,6 @@ Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
   } else {
     final code = response.statusCode;
     final error = response.error;
-    print("Error: $code $error");
-    return null;
+    throw HttpException("Error $code: $error");
   }
 }
