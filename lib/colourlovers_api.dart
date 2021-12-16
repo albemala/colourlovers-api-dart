@@ -106,4 +106,35 @@ Future<void> main() async {
 
   var pattern = await client.getPattern(id: 1451);
   print(pattern);
+
+  print("----");
+  print("---- Lovers ----");
+  print("----");
+
+  var lovers = await client.getLovers(
+    numResults: 3,
+  );
+  lovers?.forEach(print);
+
+  print("----");
+
+  var newLovers = await client.getNewLovers(
+    numResults: 3,
+  );
+  newLovers?.forEach(print);
+
+  print("----");
+
+  var topLovers = await client.getTopLovers(
+    numResults: 3,
+  );
+  topLovers?.forEach(print);
+
+  print("----");
+
+  var lover = await client.getLover(
+    userName: "COLOURlover",
+    withComments: true,
+  );
+  print(lover);
 }

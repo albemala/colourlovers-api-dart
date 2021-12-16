@@ -1,6 +1,8 @@
 import 'package:chopper/chopper.dart';
 import 'package:colourlovers_api/color.dart';
 import 'package:colourlovers_api/colors_service.dart';
+import 'package:colourlovers_api/lover.dart';
+import 'package:colourlovers_api/lovers_service.dart';
 import 'package:colourlovers_api/palette.dart';
 import 'package:colourlovers_api/palettes_service.dart';
 import 'package:colourlovers_api/parameters.dart';
@@ -343,6 +345,70 @@ class ClClient {
       ),
     );
   }
+
+  /*
+  * Lovers
+  */
+
+  Future<List<ClLover>?> getLovers({
+    RequestOrderBy orderBy = RequestOrderBy.dateCreated,
+    RequestSortBy sortBy = RequestSortBy.ASC,
+    int numResults = 20,
+    int resultOffset = 0,
+  }) async {
+    return _callClient<List<ClLover>?, LoversService>(
+      (service) => service.getLovers(
+        orderBy.name,
+        sortBy.name,
+        numResults,
+        resultOffset,
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<List<ClLover>?> getNewLovers({
+    RequestSortBy sortBy = RequestSortBy.ASC,
+    int numResults = 20,
+    int resultOffset = 0,
+  }) async {
+    return _callClient<List<ClLover>?, LoversService>(
+      (service) => service.getNewLovers(
+        sortBy.name,
+        numResults,
+        resultOffset,
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<List<ClLover>?> getTopLovers({
+    RequestSortBy sortBy = RequestSortBy.ASC,
+    int numResults = 20,
+    int resultOffset = 0,
+  }) async {
+    return _callClient<List<ClLover>?, LoversService>(
+      (service) => service.getTopLovers(
+        sortBy.name,
+        numResults,
+        resultOffset,
+        RequestFormat.json.name,
+      ),
+    );
+  }
+
+  Future<ClLover?> getLover({
+    required String userName,
+    bool withComments = false,
+  }) async {
+    return _callClient<ClLover?, LoverService>(
+      (service) => service.getLover(
+        userName,
+        withComments ? 1 : 0,
+        RequestFormat.json.name,
+      ),
+    );
+  }
 }
 
 Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
@@ -357,6 +423,8 @@ Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
       PaletteService.create(),
       PatternsService.create(),
       PatternService.create(),
+      LoversService.create(),
+      LoverService.create(),
     ],
   );
   final service = chopper.getService<ServiceType>();
