@@ -4,21 +4,52 @@ part 'pattern.g.dart';
 
 @JsonSerializable()
 class ClPattern {
+  /// Unique id for this Pattern
   int? id;
+
+  /// Title / Name of the Pattern
   String? title;
+
+  /// Username of the Pattern's creator
   String? userName;
+
+  /// Number of views this Pattern has received
   int? numViews;
+
+  /// Number of votes this Pattern has received
   int? numVotes;
+
+  /// Number of comments this Pattern has received
   int? numComments;
+
+  /// Number of Hearts this Pattern has
   int? numHearts;
+
+  /// This Pattern's rank on COLOURlovers.com
   int? rank;
+
+  /// Date this Pattern was created
   DateTime? dateCreated;
+
+  /// List of colors within this Pattern
   List<String>? colors;
+
+  /// This Pattern's description
   String? description;
+
+  /// This Pattern's COLOURlovers.com URL
   String? url;
+
+  /// Link to a png version of this Pattern
   String? imageUrl;
+
+  /// Link to a COLOURlovers.com badge for this Pattern
   String? badgeUrl;
+
+  /// This Pattern's COLOURlovers.com API URL
   String? apiUrl;
+
+  ///
   ClTemplate? template;
 
   ClPattern({

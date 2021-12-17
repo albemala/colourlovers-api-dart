@@ -4,22 +4,55 @@ part 'color.g.dart';
 
 @JsonSerializable()
 class ClColor {
+  /// Unique id for this Color
   int? id;
+
+  /// Title / Name of the Color
   String? title;
+
+  /// Username of the Color's creator
   String? userName;
+
+  /// Number of views this Color has received
   int? numViews;
+
+  /// Number of votes this Color has received
   int? numVotes;
+
+  /// Number of comments this Color has received
   int? numComments;
+
+  /// Number of hearts this Color has
   double? numHearts;
+
+  /// This Color's rank on COLOURlovers.com
   int? rank;
+
+  /// Date this Color was created
   DateTime? dateCreated;
+
+  /// This Color's hex value
   String? hex;
+
+  /// RGB breakdown of this Color
   Rgb? rgb;
+
+  /// HSV breakdown of this color
   Hsv? hsv;
+
+  /// This Color's description
   String? description;
+
+  /// This Color's COLOURlovers.com URL
   String? url;
+
+  /// Link to a png version of this Color
   String? imageUrl;
+
+  /// Link to a COLOURlovers.com badge for this Color
   String? badgeUrl;
+
+  /// This Color's COLOURlovers.com API URL
   String? apiUrl;
 
   ClColor({

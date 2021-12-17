@@ -4,6 +4,7 @@ part 'stats.g.dart';
 
 @JsonSerializable()
 class ClStats {
+  /// Total number of colors, palettes, patterns or lovers in the COLOURlovers system
   int? total;
 
   ClStats({
