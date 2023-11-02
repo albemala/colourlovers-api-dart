@@ -6,7 +6,8 @@ part of 'palette.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ClPalette _$ClPaletteFromJson(Map<String, dynamic> json) => ClPalette(
+ColourloversPalette _$ColourloversPaletteFromJson(Map<String, dynamic> json) =>
+    ColourloversPalette(
       id: json['id'] as int?,
       title: json['title'] as String?,
       userName: json['userName'] as String?,
@@ -15,9 +16,14 @@ ClPalette _$ClPaletteFromJson(Map<String, dynamic> json) => ClPalette(
       numComments: json['numComments'] as int?,
       numHearts: (json['numHearts'] as num?)?.toDouble(),
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
-      colors: (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
-      colorWidths: (json['colorWidths'] as List<dynamic>?)?.map((e) => (e as num).toDouble()).toList(),
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
+      colors:
+          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      colorWidths: (json['colorWidths'] as List<dynamic>?)
+          ?.map((e) => (e as num).toDouble())
+          .toList(),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,
@@ -25,7 +31,9 @@ ClPalette _$ClPaletteFromJson(Map<String, dynamic> json) => ClPalette(
       apiUrl: json['apiUrl'] as String?,
     );
 
-Map<String, dynamic> _$ClPaletteToJson(ClPalette instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversPaletteToJson(
+        ColourloversPalette instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'userName': instance.userName,

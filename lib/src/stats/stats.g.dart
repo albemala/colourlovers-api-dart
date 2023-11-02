@@ -6,10 +6,12 @@ part of 'stats.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ClStats _$ClStatsFromJson(Map<String, dynamic> json) => ClStats(
+ColourloversStats _$ColourloversStatsFromJson(Map<String, dynamic> json) =>
+    ColourloversStats(
       total: json['total'] as int?,
     );
 
-Map<String, dynamic> _$ClStatsToJson(ClStats instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversStatsToJson(ColourloversStats instance) =>
+    <String, dynamic>{
       'total': instance.total,
     };

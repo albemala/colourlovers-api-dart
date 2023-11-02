@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'converters.dart';
-import 'palette.dart';
+import 'package:colourlovers_api/colourlovers_api.dart';
+import 'package:colourlovers_api/src/converters.dart';
 
 part 'palettes_service.chopper.dart';
 
-@ChopperApi(baseUrl: "/palettes")
+@ChopperApi(baseUrl: '/palettes')
 abstract class PalettesService extends ChopperService {
-  static PalettesService create([ChopperClient? client]) => _$PalettesService(client);
+  static PalettesService create([ChopperClient? client]) =>
+      _$PalettesService(client);
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/")
-  Future<Response<List<ClPalette>>> getPalettes(
+  @Get(path: '/')
+  Future<Response<List<ColourloversPalette>>> getPalettes(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -30,10 +31,10 @@ abstract class PalettesService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/new")
-  Future<Response<List<ClPalette>>> getNewPalettes(
+  @Get(path: '/new')
+  Future<Response<List<ColourloversPalette>>> getNewPalettes(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -48,10 +49,10 @@ abstract class PalettesService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/top")
-  Future<Response<List<ClPalette>>> getTopPalettes(
+  @Get(path: '/top')
+  Future<Response<List<ColourloversPalette>>> getTopPalettes(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -66,33 +67,44 @@ abstract class PalettesService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/random")
-  Future<Response<ClPalette>> getRandomPalette(
+  @Get(path: '/random')
+  Future<Response<ColourloversPalette>> getRandomPalette(
     @Query() String format,
   );
 }
 
-@ChopperApi(baseUrl: "/palette")
+@ChopperApi(baseUrl: '/palette')
 abstract class PaletteService extends ChopperService {
-  static PaletteService create([ChopperClient? client]) => _$PaletteService(client);
+  static PaletteService create([ChopperClient? client]) =>
+      _$PaletteService(client);
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/{id}")
-  Future<Response<ClPalette>> getPalette(
+  @Get(path: '/{id}')
+  Future<Response<ColourloversPalette>> getPalette(
     @Path() String id,
     @Query() int showPaletteWidths,
     @Query() String format,
   );
 }
 
-Response _firstItem<T>(Response response) {
-  return firstItem(response, ClPalette.fromJson);
+Response<ColourloversPalette> _convertResponseObject(
+  Response<dynamic> response,
+) {
+  return convertResponseFirstObject(
+    response,
+    ColourloversPalette.fromJson,
+  );
 }
 
-Response _allItems<T>(Response response) {
-  return allItems(response, ClPalette.fromJson);
+Response<List<ColourloversPalette>> _convertResponseList(
+  Response<dynamic> response,
+) {
+  return convertResponseList(
+    response,
+    ColourloversPalette.fromJson,
+  );
 }

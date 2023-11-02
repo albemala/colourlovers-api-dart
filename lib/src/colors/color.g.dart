@@ -6,7 +6,8 @@ part of 'color.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ClColor _$ClColorFromJson(Map<String, dynamic> json) => ClColor(
+ColourloversColor _$ColourloversColorFromJson(Map<String, dynamic> json) =>
+    ColourloversColor(
       id: json['id'] as int?,
       title: json['title'] as String?,
       userName: json['userName'] as String?,
@@ -15,10 +16,16 @@ ClColor _$ClColorFromJson(Map<String, dynamic> json) => ClColor(
       numComments: json['numComments'] as int?,
       numHearts: (json['numHearts'] as num?)?.toDouble(),
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
       hex: json['hex'] as String?,
-      rgb: json['rgb'] == null ? null : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
-      hsv: json['hsv'] == null ? null : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
+      rgb: json['rgb'] == null
+          ? null
+          : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
+      hsv: json['hsv'] == null
+          ? null
+          : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,
@@ -26,7 +33,8 @@ ClColor _$ClColorFromJson(Map<String, dynamic> json) => ClColor(
       apiUrl: json['apiUrl'] as String?,
     );
 
-Map<String, dynamic> _$ClColorToJson(ClColor instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversColorToJson(ColourloversColor instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'userName': instance.userName,
@@ -37,8 +45,8 @@ Map<String, dynamic> _$ClColorToJson(ClColor instance) => <String, dynamic>{
       'rank': instance.rank,
       'dateCreated': instance.dateCreated?.toIso8601String(),
       'hex': instance.hex,
-      'rgb': instance.rgb,
-      'hsv': instance.hsv,
+      'rgb': instance.rgb?.toJson(),
+      'hsv': instance.hsv?.toJson(),
       'description': instance.description,
       'url': instance.url,
       'imageUrl': instance.imageUrl,

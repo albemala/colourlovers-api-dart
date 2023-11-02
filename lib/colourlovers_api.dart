@@ -1,9 +1,7 @@
-library colourlovers_api;
-
 export 'src/client.dart';
-export 'src/color.dart';
-export 'src/lover.dart';
-export 'src/palette.dart';
+export 'src/colors/color.dart';
+export 'src/lovers/lover.dart';
+export 'src/palettes/palette.dart';
 export 'src/parameters.dart';
-export 'src/pattern.dart';
-export 'src/stats.dart';
+export 'src/patterns/pattern.dart';
+export 'src/stats/stats.dart';

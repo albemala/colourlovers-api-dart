@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'palette.g.dart';
 
 @JsonSerializable()
-class ClPalette {
+class ColourloversPalette {
   /// Unique id for this Palette
   int? id;
 
@@ -52,7 +52,7 @@ class ClPalette {
   /// This Palette's COLOURlovers.com API URL
   String? apiUrl;
 
-  ClPalette({
+  ColourloversPalette({
     this.id,
     this.title,
     this.userName,
@@ -71,12 +71,14 @@ class ClPalette {
     this.apiUrl,
   });
 
-  factory ClPalette.fromJson(Map<String, dynamic> json) => _$ClPaletteFromJson(json);
+  factory ColourloversPalette.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversPaletteFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClPaletteToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversPaletteToJson(this);
 
   @override
   String toString() {
-    return 'ClPalette{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}';
+    return '''
+ColourloversPalette{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}''';
   }
 }

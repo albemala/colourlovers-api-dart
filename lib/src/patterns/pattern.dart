@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'pattern.g.dart';
 
 @JsonSerializable()
-class ClPattern {
+class ColourloversPattern {
   /// Unique id for this Pattern
   int? id;
 
@@ -50,9 +50,9 @@ class ClPattern {
   String? apiUrl;
 
   ///
-  ClTemplate? template;
+  ColourloversTemplate? template;
 
-  ClPattern({
+  ColourloversPattern({
     this.id,
     this.title,
     this.userName,
@@ -71,31 +71,34 @@ class ClPattern {
     this.template,
   });
 
-  factory ClPattern.fromJson(Map<String, dynamic> json) => _$ClPatternFromJson(json);
+  factory ColourloversPattern.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversPatternFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClPatternToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversPatternToJson(this);
 
   @override
   String toString() {
-    return 'ClPattern{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl, template: $template}';
+    return '''
+ColourloversPattern{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl, template: $template}''';
   }
 }
 
 @JsonSerializable()
-class ClTemplate {
+class ColourloversTemplate {
   String? title;
   String? url;
-  ClAuthor? author;
+  ColourloversAuthor? author;
 
-  ClTemplate({
+  ColourloversTemplate({
     this.title,
     this.url,
     this.author,
   });
 
-  factory ClTemplate.fromJson(Map<String, dynamic> json) => _$ClTemplateFromJson(json);
+  factory ColourloversTemplate.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversTemplateFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClTemplateToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversTemplateToJson(this);
 
   @override
   String toString() {
@@ -104,18 +107,19 @@ class ClTemplate {
 }
 
 @JsonSerializable()
-class ClAuthor {
+class ColourloversAuthor {
   String? userName;
   String? url;
 
-  ClAuthor({
+  ColourloversAuthor({
     this.userName,
     this.url,
   });
 
-  factory ClAuthor.fromJson(Map<String, dynamic> json) => _$ClAuthorFromJson(json);
+  factory ColourloversAuthor.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversAuthorFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClAuthorToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversAuthorToJson(this);
 
   @override
   String toString() {

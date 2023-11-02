@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'color.dart';
-import 'converters.dart';
+import 'package:colourlovers_api/src/colors/color.dart';
+import 'package:colourlovers_api/src/converters.dart';
 
 part 'colors_service.chopper.dart';
 
-@ChopperApi(baseUrl: "/colors")
+@ChopperApi(baseUrl: '/colors')
 abstract class ColorsService extends ChopperService {
-  static ColorsService create([ChopperClient? client]) => _$ColorsService(client);
+  static ColorsService create([ChopperClient? client]) =>
+      _$ColorsService(client);
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/")
-  Future<Response<List<ClColor>>> getColors(
+  @Get(path: '/')
+  Future<Response<List<ColourloversColor>>> getColors(
     @Query() String lover,
     @Query() String hueRange,
     @Query() String briRange,
@@ -28,10 +29,10 @@ abstract class ColorsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/new")
-  Future<Response<List<ClColor>>> getNewColors(
+  @Get(path: '/new')
+  Future<Response<List<ColourloversColor>>> getNewColors(
     @Query() String lover,
     @Query() String hueRange,
     @Query() String briRange,
@@ -44,10 +45,10 @@ abstract class ColorsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/top")
-  Future<Response<List<ClColor>>> getTopColors(
+  @Get(path: '/top')
+  Future<Response<List<ColourloversColor>>> getTopColors(
     @Query() String lover,
     @Query() String hueRange,
     @Query() String briRange,
@@ -60,32 +61,42 @@ abstract class ColorsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/random")
-  Future<Response<ClColor>> getRandomColor(
+  @Get(path: '/random')
+  Future<Response<ColourloversColor>> getRandomColor(
     @Query() String format,
   );
 }
 
-@ChopperApi(baseUrl: "/color")
+@ChopperApi(baseUrl: '/color')
 abstract class ColorService extends ChopperService {
   static ColorService create([ChopperClient? client]) => _$ColorService(client);
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/{hex}")
-  Future<Response<ClColor>> getColor(
+  @Get(path: '/{hex}')
+  Future<Response<ColourloversColor>> getColor(
     @Path() String hex,
     @Query() String format,
   );
 }
 
-Response _firstItem<T>(Response response) {
-  return firstItem(response, ClColor.fromJson);
+Response<ColourloversColor> _convertResponseObject(
+  Response<dynamic> response,
+) {
+  return convertResponseFirstObject(
+    response,
+    ColourloversColor.fromJson,
+  );
 }
 
-Response _allItems<T>(Response response) {
-  return allItems(response, ClColor.fromJson);
+Response<List<ColourloversColor>> _convertResponseList(
+  Response<dynamic> response,
+) {
+  return convertResponseList(
+    response,
+    ColourloversColor.fromJson,
+  );
 }

@@ -3,160 +3,160 @@
 import 'package:colourlovers_api/colourlovers_api.dart';
 
 Future<void> main() async {
-  final client = ClClient();
+  final client = ColourloversApiClient();
 
-  print("----");
-  print("---- Colors ----");
-  print("----");
+  print('----');
+  print('---- Colors ----');
+  print('----');
 
-  List<ClColor>? colors = await client.getColors(
+  final colors = await client.getColors(
     numResults: 3,
   );
   colors?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClColor>? newColors = await client.getNewColors(
+  final newColors = await client.getNewColors(
     numResults: 3,
   );
   newColors?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClColor>? topColors = await client.getTopColors(
+  final topColors = await client.getTopColors(
     numResults: 3,
   );
   topColors?.forEach(print);
 
-  print("----");
+  print('----');
 
-  ClColor? randomColor = await client.getRandomColor();
+  final randomColor = await client.getRandomColor();
   print(randomColor);
 
-  print("----");
+  print('----');
 
-  ClColor? color = await client.getColor(hex: "6B4106");
+  final color = await client.getColor(hex: '6B4106');
   print(color);
 
-  print("----");
-  print("---- Palettes ----");
-  print("----");
+  print('----');
+  print('---- Palettes ----');
+  print('----');
 
-  List<ClPalette>? palettes = await client.getPalettes(
+  final palettes = await client.getPalettes(
     numResults: 3,
   );
   palettes?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClPalette>? newPalettes = await client.getNewPalettes(
+  final newPalettes = await client.getNewPalettes(
     numResults: 3,
   );
   newPalettes?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClPalette>? topPalettes = await client.getTopPalettes(
+  final topPalettes = await client.getTopPalettes(
     numResults: 3,
   );
   topPalettes?.forEach(print);
 
-  print("----");
+  print('----');
 
-  ClPalette? randomPalette = await client.getRandomPalette();
+  final randomPalette = await client.getRandomPalette();
   print(randomPalette);
 
-  print("----");
+  print('----');
 
-  ClPalette? palette = await client.getPalette(
+  final palette = await client.getPalette(
     id: 113451,
     showPaletteWidths: true,
   );
   print(palette);
 
-  print("----");
-  print("---- Patterns ----");
-  print("----");
+  print('----');
+  print('---- Patterns ----');
+  print('----');
 
-  List<ClPattern>? patterns = await client.getPatterns(
+  final patterns = await client.getPatterns(
     numResults: 3,
   );
   patterns?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClPattern>? newPatterns = await client.getNewPatterns(
+  final newPatterns = await client.getNewPatterns(
     numResults: 3,
   );
   newPatterns?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClPattern>? topPatterns = await client.getTopPatterns(
+  final topPatterns = await client.getTopPatterns(
     numResults: 3,
   );
   topPatterns?.forEach(print);
 
-  print("----");
+  print('----');
 
-  ClPattern? randomPattern = await client.getRandomPattern();
+  final randomPattern = await client.getRandomPattern();
   print(randomPattern);
 
-  print("----");
+  print('----');
 
-  ClPattern? pattern = await client.getPattern(id: 1451);
+  final pattern = await client.getPattern(id: 1451);
   print(pattern);
 
-  print("----");
-  print("---- Lovers ----");
-  print("----");
+  print('----');
+  print('---- Lovers ----');
+  print('----');
 
-  List<ClLover>? lovers = await client.getLovers(
+  final lovers = await client.getLovers(
     numResults: 3,
   );
   lovers?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClLover>? newLovers = await client.getNewLovers(
+  final newLovers = await client.getNewLovers(
     numResults: 3,
   );
   newLovers?.forEach(print);
 
-  print("----");
+  print('----');
 
-  List<ClLover>? topLovers = await client.getTopLovers(
+  final topLovers = await client.getTopLovers(
     numResults: 3,
   );
   topLovers?.forEach(print);
 
-  print("----");
+  print('----');
 
-  ClLover? lover = await client.getLover(
-    userName: "COLOURlover",
+  final lover = await client.getLover(
+    userName: 'COLOURlover',
     withComments: true,
   );
   print(lover);
 
-  print("----");
-  print("---- Stats ----");
-  print("----");
+  print('----');
+  print('---- Stats ----');
+  print('----');
 
-  ClStats? colorStats = await client.getColorStats();
+  final colorStats = await client.getColorStats();
   print(colorStats);
 
-  print("----");
+  print('----');
 
-  ClStats? paletteStats = await client.getPaletteStats();
+  final paletteStats = await client.getPaletteStats();
   print(paletteStats);
 
-  print("----");
+  print('----');
 
-  ClStats? patternStats = await client.getPatternStats();
+  final patternStats = await client.getPatternStats();
   print(patternStats);
 
-  print("----");
+  print('----');
 
-  ClStats? loverStats = await client.getLoverStats();
+  final loverStats = await client.getLoverStats();
   print(loverStats);
 }

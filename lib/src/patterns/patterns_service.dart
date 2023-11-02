@@ -1,20 +1,21 @@
 import 'dart:async';
 
 import 'package:chopper/chopper.dart';
-import 'converters.dart';
-import 'pattern.dart';
+import 'package:colourlovers_api/src/converters.dart';
+import 'package:colourlovers_api/src/patterns/pattern.dart';
 
 part 'patterns_service.chopper.dart';
 
-@ChopperApi(baseUrl: "/patterns")
+@ChopperApi(baseUrl: '/patterns')
 abstract class PatternsService extends ChopperService {
-  static PatternsService create([ChopperClient? client]) => _$PatternsService(client);
+  static PatternsService create([ChopperClient? client]) =>
+      _$PatternsService(client);
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/")
-  Future<Response<List<ClPattern>>> getPatterns(
+  @Get(path: '/')
+  Future<Response<List<ColourloversPattern>>> getPatterns(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -29,10 +30,10 @@ abstract class PatternsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/new")
-  Future<Response<List<ClPattern>>> getNewPatterns(
+  @Get(path: '/new')
+  Future<Response<List<ColourloversPattern>>> getNewPatterns(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -46,10 +47,10 @@ abstract class PatternsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _allItems,
+    response: _convertResponseList,
   )
-  @Get(path: "/top")
-  Future<Response<List<ClPattern>>> getTopPatterns(
+  @Get(path: '/top')
+  Future<Response<List<ColourloversPattern>>> getTopPatterns(
     @Query() String lover,
     @Query() String hueOption,
     @Query() String hex,
@@ -63,32 +64,43 @@ abstract class PatternsService extends ChopperService {
   );
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/random")
-  Future<Response<ClPattern>> getRandomPattern(
+  @Get(path: '/random')
+  Future<Response<ColourloversPattern>> getRandomPattern(
     @Query() String format,
   );
 }
 
-@ChopperApi(baseUrl: "/pattern")
+@ChopperApi(baseUrl: '/pattern')
 abstract class PatternService extends ChopperService {
-  static PatternService create([ChopperClient? client]) => _$PatternService(client);
+  static PatternService create([ChopperClient? client]) =>
+      _$PatternService(client);
 
   @FactoryConverter(
-    response: _firstItem,
+    response: _convertResponseObject,
   )
-  @Get(path: "/{id}")
-  Future<Response<ClPattern>> getPattern(
+  @Get(path: '/{id}')
+  Future<Response<ColourloversPattern>> getPattern(
     @Path() String id,
     @Query() String format,
   );
 }
 
-Response _firstItem<T>(Response response) {
-  return firstItem(response, ClPattern.fromJson);
+Response<ColourloversPattern> _convertResponseObject(
+  Response<dynamic> response,
+) {
+  return convertResponseFirstObject(
+    response,
+    ColourloversPattern.fromJson,
+  );
 }
 
-Response _allItems<T>(Response response) {
-  return allItems(response, ClPattern.fromJson);
+Response<List<ColourloversPattern>> _convertResponseList(
+  Response<dynamic> response,
+) {
+  return convertResponseList(
+    response,
+    ColourloversPattern.fromJson,
+  );
 }

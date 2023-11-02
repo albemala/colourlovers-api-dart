@@ -2,11 +2,11 @@ import 'package:colourlovers_api/colourlovers_api.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  final client = ClClient();
+  final client = ColourloversApiClient();
 
   group('Colors', () {
     test('getColors', () async {
-      var colors = await client.getColors(
+      final colors = await client.getColors(
         numResults: 3,
       );
       expect(colors, isNotNull);
@@ -16,7 +16,7 @@ void main() {
       });
     });
     test('getNewColors', () async {
-      var colors = await client.getNewColors(
+      final colors = await client.getNewColors(
         numResults: 3,
       );
       expect(colors, isNotNull);
@@ -26,7 +26,7 @@ void main() {
       });
     });
     test('getTopColors', () async {
-      var colors = await client.getTopColors(
+      final colors = await client.getTopColors(
         numResults: 3,
       );
       expect(colors, isNotNull);
@@ -36,19 +36,19 @@ void main() {
       });
     });
     test('getRandomColor', () async {
-      var color = await client.getRandomColor();
+      final color = await client.getRandomColor();
       expect(color, isNotNull);
       expect(color?.id, isNotNull);
     });
     test('getColor', () async {
-      var color = await client.getColor(hex: "6B4106");
+      final color = await client.getColor(hex: '6B4106');
       expect(color, isNotNull);
       expect(color?.id, isNotNull);
     });
   });
   group('Palettes', () {
     test('getPalettes', () async {
-      var palettes = await client.getPalettes(
+      final palettes = await client.getPalettes(
         numResults: 3,
       );
       expect(palettes, isNotNull);
@@ -58,7 +58,7 @@ void main() {
       });
     });
     test('getNewPalettes', () async {
-      var palettes = await client.getNewPalettes(
+      final palettes = await client.getNewPalettes(
         numResults: 3,
       );
       expect(palettes, isNotNull);
@@ -68,7 +68,7 @@ void main() {
       });
     });
     test('getTopPalettes', () async {
-      var palettes = await client.getTopPalettes(
+      final palettes = await client.getTopPalettes(
         numResults: 3,
       );
       expect(palettes, isNotNull);
@@ -78,12 +78,12 @@ void main() {
       });
     });
     test('getRandomPalette', () async {
-      var palette = await client.getRandomPalette();
+      final palette = await client.getRandomPalette();
       expect(palette, isNotNull);
       expect(palette?.id, isNotNull);
     });
     test('getPalette', () async {
-      var palette = await client.getPalette(
+      final palette = await client.getPalette(
         id: 113451,
         showPaletteWidths: true,
       );
@@ -93,7 +93,7 @@ void main() {
   });
   group('Patterns', () {
     test('getPatterns', () async {
-      var patterns = await client.getPatterns(
+      final patterns = await client.getPatterns(
         numResults: 3,
       );
       expect(patterns, isNotNull);
@@ -103,7 +103,7 @@ void main() {
       });
     });
     test('getNewPatterns', () async {
-      var patterns = await client.getNewPatterns(
+      final patterns = await client.getNewPatterns(
         numResults: 3,
       );
       expect(patterns, isNotNull);
@@ -113,7 +113,7 @@ void main() {
       });
     });
     test('getTopPatterns', () async {
-      var patterns = await client.getTopPatterns(
+      final patterns = await client.getTopPatterns(
         numResults: 3,
       );
       expect(patterns, isNotNull);
@@ -123,19 +123,19 @@ void main() {
       });
     });
     test('getRandomPattern', () async {
-      var pattern = await client.getRandomPattern();
+      final pattern = await client.getRandomPattern();
       expect(pattern, isNotNull);
       expect(pattern?.id, isNotNull);
     });
     test('getPattern', () async {
-      var pattern = await client.getPattern(id: 1451);
+      final pattern = await client.getPattern(id: 1451);
       expect(pattern, isNotNull);
       expect(pattern?.id, isNotNull);
     });
   });
   group('Lovers', () {
     test('getLovers', () async {
-      var lovers = await client.getLovers(
+      final lovers = await client.getLovers(
         numResults: 3,
       );
       expect(lovers, isNotNull);
@@ -145,7 +145,7 @@ void main() {
       });
     });
     test('getNewLovers', () async {
-      var lovers = await client.getNewLovers(
+      final lovers = await client.getNewLovers(
         numResults: 3,
       );
       expect(lovers, isNotNull);
@@ -155,7 +155,7 @@ void main() {
       });
     });
     test('getTopLovers', () async {
-      var lovers = await client.getTopLovers(
+      final lovers = await client.getTopLovers(
         numResults: 3,
       );
       expect(lovers, isNotNull);
@@ -165,8 +165,8 @@ void main() {
       });
     });
     test('getLover', () async {
-      var lover = await client.getLover(
-        userName: "COLOURlover",
+      final lover = await client.getLover(
+        userName: 'COLOURlover',
         withComments: true,
       );
       expect(lover, isNotNull);
@@ -175,22 +175,22 @@ void main() {
   });
   group('Stats', () {
     test('getColorStats', () async {
-      var stats = await client.getColorStats();
+      final stats = await client.getColorStats();
       expect(stats, isNotNull);
       expect(stats?.total, isNotNull);
     });
     test('getPaletteStats', () async {
-      var stats = await client.getPaletteStats();
+      final stats = await client.getPaletteStats();
       expect(stats, isNotNull);
       expect(stats?.total, isNotNull);
     });
     test('getPatternStats', () async {
-      var stats = await client.getPatternStats();
+      final stats = await client.getPatternStats();
       expect(stats, isNotNull);
       expect(stats?.total, isNotNull);
     });
     test('getLoverStats', () async {
-      var stats = await client.getLoverStats();
+      final stats = await client.getLoverStats();
       expect(stats, isNotNull);
       expect(stats?.total, isNotNull);
     });

@@ -1,132 +1,150 @@
 import 'dart:io';
 
 import 'package:chopper/chopper.dart';
+import 'package:colourlovers_api/src/colors/color.dart';
+import 'package:colourlovers_api/src/colors/colors_service.dart';
+import 'package:colourlovers_api/src/lovers/lover.dart';
+import 'package:colourlovers_api/src/lovers/lovers_service.dart';
+import 'package:colourlovers_api/src/palettes/palette.dart';
+import 'package:colourlovers_api/src/palettes/palettes_service.dart';
+import 'package:colourlovers_api/src/parameters.dart';
+import 'package:colourlovers_api/src/patterns/pattern.dart';
+import 'package:colourlovers_api/src/patterns/patterns_service.dart';
+import 'package:colourlovers_api/src/stats/stats.dart';
+import 'package:colourlovers_api/src/stats/stats_service.dart';
 
-import 'color.dart';
-import 'colors_service.dart';
-import 'lover.dart';
-import 'lovers_service.dart';
-import 'palette.dart';
-import 'palettes_service.dart';
-import 'parameters.dart';
-import 'pattern.dart';
-import 'patterns_service.dart';
-import 'stats.dart';
-import 'stats_service.dart';
-
-class ClClient {
+class ColourloversApiClient {
   /*
   * Colors
   */
 
-  Future<List<ClColor>?> getColors({
-    String lover = "",
+  Future<List<ColourloversColor>?> getColors({
+    String lover = '',
     int hueMin = 0,
     int hueMax = 359,
     int brightnessMin = 0,
     int brightnessMax = 99,
-    String keywords = "",
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestOrderBy orderBy = ColourloversRequestOrderBy.dateCreated,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    assert(hueMin >= 0 && hueMin <= 359);
-    assert(hueMin < hueMax);
+    assert(
+      hueMin >= 0 && hueMin <= 359,
+      'hueMin must be between 0 and 359',
+    );
+    assert(
+      hueMin < hueMax,
+      'hueMin must be less than hueMax',
+    );
 
-    assert(brightnessMin >= 0 && brightnessMax <= 99);
-    assert(brightnessMin < brightnessMax);
+    assert(
+      brightnessMin >= 0 && brightnessMax <= 99,
+      'brightnessMin must be between 0 and 99',
+    );
+    assert(
+      brightnessMin < brightnessMax,
+      'brightnessMin must be less than brightnessMax',
+    );
 
-    return _callClient<List<ClColor>?, ColorsService>(
+    return _callClient<List<ColourloversColor>?, ColorsService>(
       (service) => service.getColors(
         lover,
-        "$hueMin,$hueMax",
-        "$brightnessMin,$brightnessMax",
+        '$hueMin,$hueMax',
+        '$brightnessMin,$brightnessMax',
         keywords,
         keywordExact ? 1 : 0,
         orderBy.name,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClColor>?> getNewColors({
-    String lover = "",
+  Future<List<ColourloversColor>?> getNewColors({
+    String lover = '',
     int hueMin = 0,
     int hueMax = 359,
     int brightnessMin = 0,
     int brightnessMax = 99,
-    String keywords = "",
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClColor>?, ColorsService>(
+    return _callClient<List<ColourloversColor>?, ColorsService>(
       (service) => service.getNewColors(
         lover,
-        "$hueMin,$hueMax",
-        "$brightnessMin,$brightnessMax",
+        '$hueMin,$hueMax',
+        '$brightnessMin,$brightnessMax',
         keywords,
         keywordExact ? 1 : 0,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClColor>?> getTopColors({
-    String lover = "",
+  Future<List<ColourloversColor>?> getTopColors({
+    String lover = '',
     int hueMin = 0,
     int hueMax = 359,
     int brightnessMin = 0,
     int brightnessMax = 99,
-    String keywords = "",
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClColor>?, ColorsService>(
+    return _callClient<List<ColourloversColor>?, ColorsService>(
       (service) => service.getTopColors(
         lover,
-        "$hueMin,$hueMax",
-        "$brightnessMin,$brightnessMax",
+        '$hueMin,$hueMax',
+        '$brightnessMin,$brightnessMax',
         keywords,
         keywordExact ? 1 : 0,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClColor?> getRandomColor() async {
-    return _callClient<ClColor?, ColorsService>(
+  Future<ColourloversColor?> getRandomColor() async {
+    return _callClient<ColourloversColor?, ColorsService>(
       (service) => service.getRandomColor(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
   ///
   /// [hex] is any 6-char hex value (a hex color representation).
-  Future<ClColor?> getColor({
+  Future<ColourloversColor?> getColor({
     required String hex,
   }) async {
-    assert(hex.length == 6);
-    assert(RegExp(r"^[0-9a-fA-F]+$").hasMatch(hex));
-    return _callClient<ClColor?, ColorService>(
+    assert(
+      hex.length == 6,
+      'hex must be 6 characters long',
+    );
+    assert(
+      RegExp(r'^[0-9a-fA-F]+$').hasMatch(hex),
+      'hex must be a hex value',
+    );
+
+    return _callClient<ColourloversColor?, ColorService>(
       (service) => service.getColor(
         hex,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
@@ -135,24 +153,24 @@ class ClClient {
   * Palettes
   */
 
-  Future<List<ClPalette>?> getPalettes({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPalette>?> getPalettes({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestOrderBy orderBy = ColourloversRequestOrderBy.dateCreated,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPalette>?, PalettesService>(
+    return _callClient<List<ColourloversPalette>?, PalettesService>(
       (service) => service.getPalettes(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         showPaletteWidths ? 1 : 0,
         keywords,
@@ -161,28 +179,28 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClPalette>?> getNewPalettes({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPalette>?> getNewPalettes({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPalette>?, PalettesService>(
+    return _callClient<List<ColourloversPalette>?, PalettesService>(
       (service) => service.getNewPalettes(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         showPaletteWidths ? 1 : 0,
         keywords,
@@ -190,28 +208,28 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClPalette>?> getTopPalettes({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPalette>?> getTopPalettes({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
     bool showPaletteWidths = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPalette>?, PalettesService>(
+    return _callClient<List<ColourloversPalette>?, PalettesService>(
       (service) => service.getTopPalettes(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         showPaletteWidths ? 1 : 0,
         keywords,
@@ -219,28 +237,28 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClPalette?> getRandomPalette() async {
-    return _callClient<ClPalette?, PalettesService>(
+  Future<ColourloversPalette?> getRandomPalette() async {
+    return _callClient<ColourloversPalette?, PalettesService>(
       (service) => service.getRandomPalette(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClPalette?> getPalette({
+  Future<ColourloversPalette?> getPalette({
     required int id,
     bool showPaletteWidths = false,
   }) async {
-    return _callClient<ClPalette?, PaletteService>(
+    return _callClient<ColourloversPalette?, PaletteService>(
       (service) => service.getPalette(
         id.toString(),
         showPaletteWidths ? 1 : 0,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
@@ -249,23 +267,23 @@ class ClClient {
   * Patterns
   */
 
-  Future<List<ClPattern>?> getPatterns({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPattern>?> getPatterns({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestOrderBy orderBy = ColourloversRequestOrderBy.dateCreated,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPattern>?, PatternsService>(
+    return _callClient<List<ColourloversPattern>?, PatternsService>(
       (service) => service.getPatterns(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         keywords,
         keywordExact ? 1 : 0,
@@ -273,80 +291,80 @@ class ClClient {
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClPattern>?> getNewPatterns({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPattern>?> getNewPatterns({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPattern>?, PatternsService>(
+    return _callClient<List<ColourloversPattern>?, PatternsService>(
       (service) => service.getNewPatterns(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         keywords,
         keywordExact ? 1 : 0,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClPattern>?> getTopPatterns({
-    String lover = "",
-    List<ClRequestHueRange> hueRanges = const [],
+  Future<List<ColourloversPattern>?> getTopPatterns({
+    String lover = '',
+    List<ColourloversRequestHueRange> hueRanges = const [],
     List<String> hex = const [],
-    ClRequestHexLogic hexLogic = ClRequestHexLogic.AND,
-    String keywords = "",
+    ColourloversRequestHexLogic hexLogic = ColourloversRequestHexLogic.AND,
+    String keywords = '',
     bool keywordExact = false,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClPattern>?, PatternsService>(
+    return _callClient<List<ColourloversPattern>?, PatternsService>(
       (service) => service.getTopPatterns(
         lover,
-        hueRanges.map((hue) => hue.name).join(","),
-        hex.join(","),
+        hueRanges.map((hue) => hue.name).join(','),
+        hex.join(','),
         hexLogic.name,
         keywords,
         keywordExact ? 1 : 0,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClPattern?> getRandomPattern() async {
-    return _callClient<ClPattern?, PatternsService>(
+  Future<ColourloversPattern?> getRandomPattern() async {
+    return _callClient<ColourloversPattern?, PatternsService>(
       (service) => service.getRandomPattern(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClPattern?> getPattern({
+  Future<ColourloversPattern?> getPattern({
     required int id,
   }) async {
-    return _callClient<ClPattern?, PatternService>(
+    return _callClient<ColourloversPattern?, PatternService>(
       (service) => service.getPattern(
         id.toString(),
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
@@ -355,62 +373,62 @@ class ClClient {
   * Lovers
   */
 
-  Future<List<ClLover>?> getLovers({
-    ClRequestOrderBy orderBy = ClRequestOrderBy.dateCreated,
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+  Future<List<ColourloversLover>?> getLovers({
+    ColourloversRequestOrderBy orderBy = ColourloversRequestOrderBy.dateCreated,
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClLover>?, LoversService>(
+    return _callClient<List<ColourloversLover>?, LoversService>(
       (service) => service.getLovers(
         orderBy.name,
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClLover>?> getNewLovers({
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+  Future<List<ColourloversLover>?> getNewLovers({
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClLover>?, LoversService>(
+    return _callClient<List<ColourloversLover>?, LoversService>(
       (service) => service.getNewLovers(
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<List<ClLover>?> getTopLovers({
-    ClRequestSortBy sortBy = ClRequestSortBy.ASC,
+  Future<List<ColourloversLover>?> getTopLovers({
+    ColourloversRequestSortBy sortBy = ColourloversRequestSortBy.ASC,
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    return _callClient<List<ClLover>?, LoversService>(
+    return _callClient<List<ColourloversLover>?, LoversService>(
       (service) => service.getTopLovers(
         sortBy.name,
         numResults,
         resultOffset,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClLover?> getLover({
+  Future<ColourloversLover?> getLover({
     required String userName,
     bool withComments = false,
   }) async {
-    return _callClient<ClLover?, LoverService>(
+    return _callClient<ColourloversLover?, LoverService>(
       (service) => service.getLover(
         userName,
         withComments ? 1 : 0,
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
@@ -419,65 +437,67 @@ class ClClient {
   * Stats
   */
 
-  Future<ClStats?> getColorStats() {
-    return _callClient<ClStats, StatsService>(
+  Future<ColourloversStats?> getColorStats() {
+    return _callClient<ColourloversStats, StatsService>(
       (service) => service.getColorStats(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClStats?> getPaletteStats() {
-    return _callClient<ClStats, StatsService>(
+  Future<ColourloversStats?> getPaletteStats() {
+    return _callClient<ColourloversStats, StatsService>(
       (service) => service.getPaletteStats(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClStats?> getPatternStats() {
-    return _callClient<ClStats, StatsService>(
+  Future<ColourloversStats?> getPatternStats() {
+    return _callClient<ColourloversStats, StatsService>(
       (service) => service.getPatternStats(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
 
-  Future<ClStats?> getLoverStats() {
-    return _callClient<ClStats, StatsService>(
+  Future<ColourloversStats?> getLoverStats() {
+    return _callClient<ColourloversStats, StatsService>(
       (service) => service.getLoverStats(
-        ClRequestFormat.json.name,
+        ColourloversRequestFormat.json.name,
       ),
     );
   }
-}
 
-Future<ReturnType?> _callClient<ReturnType, ServiceType extends ChopperService>(
-  Future<Response> Function(ServiceType service) callback,
-) async {
-  final chopper = ChopperClient(
-    baseUrl: "http://www.colourlovers.com/api",
-    services: [
-      ColorsService.create(),
-      ColorService.create(),
-      PalettesService.create(),
-      PaletteService.create(),
-      PatternsService.create(),
-      PatternService.create(),
-      LoversService.create(),
-      LoverService.create(),
-      StatsService.create(),
-    ],
-  );
-  final service = chopper.getService<ServiceType>();
-  final response = await callback(service);
-  chopper.dispose();
+  Future<ReturnType?>
+      _callClient<ReturnType, ServiceType extends ChopperService>(
+    Future<Response<ReturnType>> Function(ServiceType service) callback,
+  ) async {
+    final client = ChopperClient(
+      baseUrl: Uri.parse('https://www.colourlovers.com/api'),
+      services: [
+        ColorsService.create(),
+        ColorService.create(),
+        PalettesService.create(),
+        PaletteService.create(),
+        PatternsService.create(),
+        PatternService.create(),
+        LoversService.create(),
+        LoverService.create(),
+        StatsService.create(),
+      ],
+    );
 
-  if (response.isSuccessful) {
-    return response.body;
-  } else {
-    final code = response.statusCode;
-    final error = response.error;
-    throw HttpException("Error $code: $error");
+    final service = client.getService<ServiceType>();
+    final response = await callback(service);
+    client.dispose();
+
+    if (response.isSuccessful) {
+      return response.body;
+    } else {
+      final code = response.statusCode;
+      final error = response.error;
+      throw HttpException('Error $code: $error');
+    }
   }
 }

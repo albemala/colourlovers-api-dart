@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'lover.g.dart';
 
 @JsonSerializable()
-class ClLover {
+class ColourloversLover {
   /// This Lover's Username
   String? userName;
 
@@ -46,7 +46,7 @@ class ClLover {
   /// This Lover's COLOURlovers.com API URL
   String? apiUrl;
 
-  ClLover({
+  ColourloversLover({
     this.userName,
     this.dateRegistered,
     this.dateLastActive,
@@ -63,12 +63,14 @@ class ClLover {
     this.apiUrl,
   });
 
-  factory ClLover.fromJson(Map<String, dynamic> json) => _$ClLoverFromJson(json);
+  factory ColourloversLover.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversLoverFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClLoverToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversLoverToJson(this);
 
   @override
   String toString() {
-    return 'ClLover{userName: $userName, dateRegistered: $dateRegistered, dateLastActive: $dateLastActive, rating: $rating, location: $location, numColors: $numColors, numPalettes: $numPalettes, numPatterns: $numPatterns, numCommentsMade: $numCommentsMade, numLovers: $numLovers, numCommentsOnProfile: $numCommentsOnProfile, comments: $comments, url: $url, apiUrl: $apiUrl}';
+    return '''
+ColourloversLover{userName: $userName, dateRegistered: $dateRegistered, dateLastActive: $dateLastActive, rating: $rating, location: $location, numColors: $numColors, numPalettes: $numPalettes, numPatterns: $numPatterns, numCommentsMade: $numCommentsMade, numLovers: $numLovers, numCommentsOnProfile: $numCommentsOnProfile, comments: $comments, url: $url, apiUrl: $apiUrl}''';
   }
 }

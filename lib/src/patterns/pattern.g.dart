@@ -6,7 +6,8 @@ part of 'pattern.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-ClPattern _$ClPatternFromJson(Map<String, dynamic> json) => ClPattern(
+ColourloversPattern _$ColourloversPatternFromJson(Map<String, dynamic> json) =>
+    ColourloversPattern(
       id: json['id'] as int?,
       title: json['title'] as String?,
       userName: json['userName'] as String?,
@@ -15,17 +16,25 @@ ClPattern _$ClPatternFromJson(Map<String, dynamic> json) => ClPattern(
       numComments: json['numComments'] as int?,
       numHearts: json['numHearts'] as int?,
       rank: json['rank'] as int?,
-      dateCreated: json['dateCreated'] == null ? null : DateTime.parse(json['dateCreated'] as String),
-      colors: (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
+      dateCreated: json['dateCreated'] == null
+          ? null
+          : DateTime.parse(json['dateCreated'] as String),
+      colors:
+          (json['colors'] as List<dynamic>?)?.map((e) => e as String).toList(),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,
       badgeUrl: json['badgeUrl'] as String?,
       apiUrl: json['apiUrl'] as String?,
-      template: json['template'] == null ? null : ClTemplate.fromJson(json['template'] as Map<String, dynamic>),
+      template: json['template'] == null
+          ? null
+          : ColourloversTemplate.fromJson(
+              json['template'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ClPatternToJson(ClPattern instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversPatternToJson(
+        ColourloversPattern instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'title': instance.title,
       'userName': instance.userName,
@@ -41,27 +50,35 @@ Map<String, dynamic> _$ClPatternToJson(ClPattern instance) => <String, dynamic>{
       'imageUrl': instance.imageUrl,
       'badgeUrl': instance.badgeUrl,
       'apiUrl': instance.apiUrl,
-      'template': instance.template,
+      'template': instance.template?.toJson(),
     };
 
-ClTemplate _$ClTemplateFromJson(Map<String, dynamic> json) => ClTemplate(
+ColourloversTemplate _$ColourloversTemplateFromJson(
+        Map<String, dynamic> json) =>
+    ColourloversTemplate(
       title: json['title'] as String?,
       url: json['url'] as String?,
-      author: json['author'] == null ? null : ClAuthor.fromJson(json['author'] as Map<String, dynamic>),
+      author: json['author'] == null
+          ? null
+          : ColourloversAuthor.fromJson(json['author'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$ClTemplateToJson(ClTemplate instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversTemplateToJson(
+        ColourloversTemplate instance) =>
+    <String, dynamic>{
       'title': instance.title,
       'url': instance.url,
-      'author': instance.author,
+      'author': instance.author?.toJson(),
     };
 
-ClAuthor _$ClAuthorFromJson(Map<String, dynamic> json) => ClAuthor(
+ColourloversAuthor _$ColourloversAuthorFromJson(Map<String, dynamic> json) =>
+    ColourloversAuthor(
       userName: json['userName'] as String?,
       url: json['url'] as String?,
     );
 
-Map<String, dynamic> _$ClAuthorToJson(ClAuthor instance) => <String, dynamic>{
+Map<String, dynamic> _$ColourloversAuthorToJson(ColourloversAuthor instance) =>
+    <String, dynamic>{
       'userName': instance.userName,
       'url': instance.url,
     };

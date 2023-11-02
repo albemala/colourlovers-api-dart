@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'color.g.dart';
 
 @JsonSerializable()
-class ClColor {
+class ColourloversColor {
   /// Unique id for this Color
   int? id;
 
@@ -55,7 +55,7 @@ class ClColor {
   /// This Color's COLOURlovers.com API URL
   String? apiUrl;
 
-  ClColor({
+  ColourloversColor({
     this.id,
     this.title,
     this.userName,
@@ -75,13 +75,15 @@ class ClColor {
     this.apiUrl,
   });
 
-  factory ClColor.fromJson(Map<String, dynamic> json) => _$ClColorFromJson(json);
+  factory ColourloversColor.fromJson(Map<String, dynamic> json) =>
+      _$ColourloversColorFromJson(json);
 
-  Map<String, dynamic> toJson() => _$ClColorToJson(this);
+  Map<String, dynamic> toJson() => _$ColourloversColorToJson(this);
 
   @override
   String toString() {
-    return 'ClColor{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, hex: $hex, rgb: $rgb, hsv: $hsv, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}';
+    return '''
+ColourloversColor{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, hex: $hex, rgb: $rgb, hsv: $hsv, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}''';
   }
 }
 

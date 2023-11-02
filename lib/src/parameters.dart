@@ -1,9 +1,9 @@
-enum ClRequestFormat {
+enum ColourloversRequestFormat {
   json,
   xml,
 }
 
-enum ClRequestOrderBy {
+enum ColourloversRequestOrderBy {
   dateCreated,
   score,
   name,
@@ -11,12 +11,12 @@ enum ClRequestOrderBy {
   numViews,
 }
 
-enum ClRequestSortBy {
+enum ColourloversRequestSortBy {
   ASC,
   DESC,
 }
 
-enum ClRequestHueRange {
+enum ColourloversRequestHueRange {
   red,
   orange,
   yellow,
@@ -27,7 +27,7 @@ enum ClRequestHueRange {
   fuchsia,
 }
 
-enum ClRequestHexLogic {
+enum ColourloversRequestHexLogic {
   AND,
   OR,
 }
