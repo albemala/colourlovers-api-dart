@@ -1,30 +1,27 @@
 name: colourlovers_api
 description: A Dart implementation of the COLOURlovers API
 version: 1.0.0
-homepage: https://github.com/albemala/colourlovers-api-dart
+repository: https://github.com/albemala/colourlovers-api-dart
 
 environment:
-  sdk: ">=2.15.0 <3.0.0"
-  flutter: ">=1.17.0"
+  sdk: '>=3.0.0 <4.0.0'
+  flutter: ">=3.10.0"
 
 dependencies:
   flutter:
     sdk: flutter
 
-  json_annotation: ^4.4.0
-  chopper: ^4.0.4
+  json_annotation: ^4.8.1
+  chopper: ^7.0.9
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # flutter pub run build_runner build
-  build_runner: ^2.1.5
-  json_serializable: ^6.1.1
-  chopper_generator: ^4.0.3
+  build_runner: ^2.4.6
+  json_serializable: ^6.7.1
+  chopper_generator: ^7.0.6
 
-  flutter_lints: ^1.0.4
+  very_good_analysis: ^5.1.0
 
 flutter:
-  # For details regarding assets in packages, see
-  # https://flutter.dev/assets-and-images/#from-packages
