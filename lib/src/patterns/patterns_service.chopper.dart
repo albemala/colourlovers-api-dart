@@ -6,6 +6,7 @@ part of 'patterns_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$PatternsService extends PatternsService {
   _$PatternsService([ChopperClient? client]) {
@@ -14,7 +15,7 @@ final class _$PatternsService extends PatternsService {
   }
 
   @override
-  final definitionType = PatternsService;
+  final Type definitionType = PatternsService;
 
   @override
   Future<Response<List<ColourloversPattern>>> getPatterns(
@@ -149,6 +150,7 @@ final class _$PatternsService extends PatternsService {
   }
 }
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$PatternService extends PatternService {
   _$PatternService([ChopperClient? client]) {
@@ -157,7 +159,7 @@ final class _$PatternService extends PatternService {
   }
 
   @override
-  final definitionType = PatternService;
+  final Type definitionType = PatternService;
 
   @override
   Future<Response<ColourloversPattern>> getPattern(

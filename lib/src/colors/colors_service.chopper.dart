@@ -6,6 +6,7 @@ part of 'colors_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$ColorsService extends ColorsService {
   _$ColorsService([ChopperClient? client]) {
@@ -14,7 +15,7 @@ final class _$ColorsService extends ColorsService {
   }
 
   @override
-  final definitionType = ColorsService;
+  final Type definitionType = ColorsService;
 
   @override
   Future<Response<List<ColourloversColor>>> getColors(
@@ -143,6 +144,7 @@ final class _$ColorsService extends ColorsService {
   }
 }
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$ColorService extends ColorService {
   _$ColorService([ChopperClient? client]) {
@@ -151,7 +153,7 @@ final class _$ColorService extends ColorService {
   }
 
   @override
-  final definitionType = ColorService;
+  final Type definitionType = ColorService;
 
   @override
   Future<Response<ColourloversColor>> getColor(

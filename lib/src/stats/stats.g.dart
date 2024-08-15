@@ -8,7 +8,7 @@ part of 'stats.dart';
 
 ColourloversStats _$ColourloversStatsFromJson(Map<String, dynamic> json) =>
     ColourloversStats(
-      total: json['total'] as int?,
+      total: (json['total'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$ColourloversStatsToJson(ColourloversStats instance) =>

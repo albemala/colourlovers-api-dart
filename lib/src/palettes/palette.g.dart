@@ -8,14 +8,14 @@ part of 'palette.dart';
 
 ColourloversPalette _$ColourloversPaletteFromJson(Map<String, dynamic> json) =>
     ColourloversPalette(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       userName: json['userName'] as String?,
-      numViews: json['numViews'] as int?,
-      numVotes: json['numVotes'] as int?,
-      numComments: json['numComments'] as int?,
+      numViews: (json['numViews'] as num?)?.toInt(),
+      numVotes: (json['numVotes'] as num?)?.toInt(),
+      numComments: (json['numComments'] as num?)?.toInt(),
       numHearts: (json['numHearts'] as num?)?.toDouble(),
-      rank: json['rank'] as int?,
+      rank: (json['rank'] as num?)?.toInt(),
       dateCreated: json['dateCreated'] == null
           ? null
           : DateTime.parse(json['dateCreated'] as String),

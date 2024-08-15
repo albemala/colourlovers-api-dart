@@ -6,6 +6,7 @@ part of 'palettes_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$PalettesService extends PalettesService {
   _$PalettesService([ChopperClient? client]) {
@@ -14,7 +15,7 @@ final class _$PalettesService extends PalettesService {
   }
 
   @override
-  final definitionType = PalettesService;
+  final Type definitionType = PalettesService;
 
   @override
   Future<Response<List<ColourloversPalette>>> getPalettes(
@@ -155,6 +156,7 @@ final class _$PalettesService extends PalettesService {
   }
 }
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$PaletteService extends PaletteService {
   _$PaletteService([ChopperClient? client]) {
@@ -163,7 +165,7 @@ final class _$PaletteService extends PaletteService {
   }
 
   @override
-  final definitionType = PaletteService;
+  final Type definitionType = PaletteService;
 
   @override
   Future<Response<ColourloversPalette>> getPalette(

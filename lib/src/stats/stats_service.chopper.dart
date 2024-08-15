@@ -6,6 +6,7 @@ part of 'stats_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$StatsService extends StatsService {
   _$StatsService([ChopperClient? client]) {
@@ -14,7 +15,7 @@ final class _$StatsService extends StatsService {
   }
 
   @override
-  final definitionType = StatsService;
+  final Type definitionType = StatsService;
 
   @override
   Future<Response<ColourloversStats>> getColorStats(String format) {

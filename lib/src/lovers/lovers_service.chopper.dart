@@ -6,6 +6,7 @@ part of 'lovers_service.dart';
 // ChopperGenerator
 // **************************************************************************
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$LoversService extends LoversService {
   _$LoversService([ChopperClient? client]) {
@@ -14,7 +15,7 @@ final class _$LoversService extends LoversService {
   }
 
   @override
-  final definitionType = LoversService;
+  final Type definitionType = LoversService;
 
   @override
   Future<Response<List<ColourloversLover>>> getLovers(
@@ -97,6 +98,7 @@ final class _$LoversService extends LoversService {
   }
 }
 
+// coverage:ignore-file
 // ignore_for_file: type=lint
 final class _$LoverService extends LoverService {
   _$LoverService([ChopperClient? client]) {
@@ -105,7 +107,7 @@ final class _$LoverService extends LoverService {
   }
 
   @override
-  final definitionType = LoverService;
+  final Type definitionType = LoverService;
 
   @override
   Future<Response<ColourloversLover>> getLover(

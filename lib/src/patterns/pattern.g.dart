@@ -8,14 +8,14 @@ part of 'pattern.dart';
 
 ColourloversPattern _$ColourloversPatternFromJson(Map<String, dynamic> json) =>
     ColourloversPattern(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       userName: json['userName'] as String?,
-      numViews: json['numViews'] as int?,
-      numVotes: json['numVotes'] as int?,
-      numComments: json['numComments'] as int?,
-      numHearts: json['numHearts'] as int?,
-      rank: json['rank'] as int?,
+      numViews: (json['numViews'] as num?)?.toInt(),
+      numVotes: (json['numVotes'] as num?)?.toInt(),
+      numComments: (json['numComments'] as num?)?.toInt(),
+      numHearts: (json['numHearts'] as num?)?.toInt(),
+      rank: (json['rank'] as num?)?.toInt(),
       dateCreated: json['dateCreated'] == null
           ? null
           : DateTime.parse(json['dateCreated'] as String),

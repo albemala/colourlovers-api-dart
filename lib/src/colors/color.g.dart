@@ -8,14 +8,14 @@ part of 'color.dart';
 
 ColourloversColor _$ColourloversColorFromJson(Map<String, dynamic> json) =>
     ColourloversColor(
-      id: json['id'] as int?,
+      id: (json['id'] as num?)?.toInt(),
       title: json['title'] as String?,
       userName: json['userName'] as String?,
-      numViews: json['numViews'] as int?,
-      numVotes: json['numVotes'] as int?,
-      numComments: json['numComments'] as int?,
+      numViews: (json['numViews'] as num?)?.toInt(),
+      numVotes: (json['numVotes'] as num?)?.toInt(),
+      numComments: (json['numComments'] as num?)?.toInt(),
       numHearts: (json['numHearts'] as num?)?.toDouble(),
-      rank: json['rank'] as int?,
+      rank: (json['rank'] as num?)?.toInt(),
       dateCreated: json['dateCreated'] == null
           ? null
           : DateTime.parse(json['dateCreated'] as String),
@@ -55,9 +55,9 @@ Map<String, dynamic> _$ColourloversColorToJson(ColourloversColor instance) =>
     };
 
 Hsv _$HsvFromJson(Map<String, dynamic> json) => Hsv(
-      hue: json['hue'] as int?,
-      saturation: json['saturation'] as int?,
-      value: json['value'] as int?,
+      hue: (json['hue'] as num?)?.toInt(),
+      saturation: (json['saturation'] as num?)?.toInt(),
+      value: (json['value'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$HsvToJson(Hsv instance) => <String, dynamic>{
@@ -67,9 +67,9 @@ Map<String, dynamic> _$HsvToJson(Hsv instance) => <String, dynamic>{
     };
 
 Rgb _$RgbFromJson(Map<String, dynamic> json) => Rgb(
-      red: json['red'] as int?,
-      green: json['green'] as int?,
-      blue: json['blue'] as int?,
+      red: (json['red'] as num?)?.toInt(),
+      green: (json['green'] as num?)?.toInt(),
+      blue: (json['blue'] as num?)?.toInt(),
     );
 
 Map<String, dynamic> _$RgbToJson(Rgb instance) => <String, dynamic>{
