@@ -1,3 +1,14 @@
+## 2.0.0
+
+- made all types immutable and equatable
+- updated linter rules
+- upgraded dependencies
+- targeting dart 3.7 and flutter 3.29
+
+## 1.1.1
+
+- upgraded dependencies
+
 ## 1.1.0
 
 - renamed classes
