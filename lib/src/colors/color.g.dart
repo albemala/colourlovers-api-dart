@@ -16,16 +16,19 @@ ColourloversColor _$ColourloversColorFromJson(Map<String, dynamic> json) =>
       numComments: (json['numComments'] as num?)?.toInt(),
       numHearts: (json['numHearts'] as num?)?.toDouble(),
       rank: (json['rank'] as num?)?.toInt(),
-      dateCreated: json['dateCreated'] == null
-          ? null
-          : DateTime.parse(json['dateCreated'] as String),
+      dateCreated:
+          json['dateCreated'] == null
+              ? null
+              : DateTime.parse(json['dateCreated'] as String),
       hex: json['hex'] as String?,
-      rgb: json['rgb'] == null
-          ? null
-          : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
-      hsv: json['hsv'] == null
-          ? null
-          : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
+      rgb:
+          json['rgb'] == null
+              ? null
+              : Rgb.fromJson(json['rgb'] as Map<String, dynamic>),
+      hsv:
+          json['hsv'] == null
+              ? null
+              : Hsv.fromJson(json['hsv'] as Map<String, dynamic>),
       description: json['description'] as String?,
       url: json['url'] as String?,
       imageUrl: json['imageUrl'] as String?,
@@ -55,25 +58,25 @@ Map<String, dynamic> _$ColourloversColorToJson(ColourloversColor instance) =>
     };
 
 Hsv _$HsvFromJson(Map<String, dynamic> json) => Hsv(
-      hue: (json['hue'] as num?)?.toInt(),
-      saturation: (json['saturation'] as num?)?.toInt(),
-      value: (json['value'] as num?)?.toInt(),
-    );
+  hue: (json['hue'] as num?)?.toInt(),
+  saturation: (json['saturation'] as num?)?.toInt(),
+  value: (json['value'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$HsvToJson(Hsv instance) => <String, dynamic>{
-      'hue': instance.hue,
-      'saturation': instance.saturation,
-      'value': instance.value,
-    };
+  'hue': instance.hue,
+  'saturation': instance.saturation,
+  'value': instance.value,
+};
 
 Rgb _$RgbFromJson(Map<String, dynamic> json) => Rgb(
-      red: (json['red'] as num?)?.toInt(),
-      green: (json['green'] as num?)?.toInt(),
-      blue: (json['blue'] as num?)?.toInt(),
-    );
+  red: (json['red'] as num?)?.toInt(),
+  green: (json['green'] as num?)?.toInt(),
+  blue: (json['blue'] as num?)?.toInt(),
+);
 
 Map<String, dynamic> _$RgbToJson(Rgb instance) => <String, dynamic>{
-      'red': instance.red,
-      'green': instance.green,
-      'blue': instance.blue,
-    };
+  'red': instance.red,
+  'green': instance.green,
+  'blue': instance.blue,
+};

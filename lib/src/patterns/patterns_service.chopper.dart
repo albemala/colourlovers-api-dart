@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'patterns_service.dart';
@@ -162,10 +163,7 @@ final class _$PatternService extends PatternService {
   final Type definitionType = PatternService;
 
   @override
-  Future<Response<ColourloversPattern>> getPattern(
-    String id,
-    String format,
-  ) {
+  Future<Response<ColourloversPattern>> getPattern(String id, String format) {
     final Uri $url = Uri.parse('/pattern/${id}');
     final Map<String, dynamic> $params = <String, dynamic>{'format': format};
     final Request $request = Request(

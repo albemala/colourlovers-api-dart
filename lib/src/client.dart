@@ -31,14 +31,8 @@ class ColourloversApiClient {
     int numResults = 20,
     int resultOffset = 0,
   }) async {
-    assert(
-      hueMin >= 0 && hueMin <= 359,
-      'hueMin must be between 0 and 359',
-    );
-    assert(
-      hueMin < hueMax,
-      'hueMin must be less than hueMax',
-    );
+    assert(hueMin >= 0 && hueMin <= 359, 'hueMin must be between 0 and 359');
+    assert(hueMin < hueMax, 'hueMin must be less than hueMax');
 
     assert(
       brightnessMin >= 0 && brightnessMax <= 99,
@@ -121,31 +115,18 @@ class ColourloversApiClient {
 
   Future<ColourloversColor?> getRandomColor() async {
     return _callClient<ColourloversColor?, ColorsService>(
-      (service) => service.getRandomColor(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getRandomColor(ColourloversRequestFormat.json.name),
     );
   }
 
   ///
   /// [hex] is any 6-char hex value (a hex color representation).
-  Future<ColourloversColor?> getColor({
-    required String hex,
-  }) async {
-    assert(
-      hex.length == 6,
-      'hex must be 6 characters long',
-    );
-    assert(
-      RegExp(r'^[0-9a-fA-F]+$').hasMatch(hex),
-      'hex must be a hex value',
-    );
+  Future<ColourloversColor?> getColor({required String hex}) async {
+    assert(hex.length == 6, 'hex must be 6 characters long');
+    assert(RegExp(r'^[0-9a-fA-F]+$').hasMatch(hex), 'hex must be a hex value');
 
     return _callClient<ColourloversColor?, ColorService>(
-      (service) => service.getColor(
-        hex,
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getColor(hex, ColourloversRequestFormat.json.name),
     );
   }
 
@@ -244,9 +225,8 @@ class ColourloversApiClient {
 
   Future<ColourloversPalette?> getRandomPalette() async {
     return _callClient<ColourloversPalette?, PalettesService>(
-      (service) => service.getRandomPalette(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) =>
+          service.getRandomPalette(ColourloversRequestFormat.json.name),
     );
   }
 
@@ -352,15 +332,12 @@ class ColourloversApiClient {
 
   Future<ColourloversPattern?> getRandomPattern() async {
     return _callClient<ColourloversPattern?, PatternsService>(
-      (service) => service.getRandomPattern(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) =>
+          service.getRandomPattern(ColourloversRequestFormat.json.name),
     );
   }
 
-  Future<ColourloversPattern?> getPattern({
-    required int id,
-  }) async {
+  Future<ColourloversPattern?> getPattern({required int id}) async {
     return _callClient<ColourloversPattern?, PatternService>(
       (service) => service.getPattern(
         id.toString(),
@@ -439,40 +416,32 @@ class ColourloversApiClient {
 
   Future<ColourloversStats?> getColorStats() {
     return _callClient<ColourloversStats, StatsService>(
-      (service) => service.getColorStats(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getColorStats(ColourloversRequestFormat.json.name),
     );
   }
 
   Future<ColourloversStats?> getPaletteStats() {
     return _callClient<ColourloversStats, StatsService>(
-      (service) => service.getPaletteStats(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getPaletteStats(ColourloversRequestFormat.json.name),
     );
   }
 
   Future<ColourloversStats?> getPatternStats() {
     return _callClient<ColourloversStats, StatsService>(
-      (service) => service.getPatternStats(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getPatternStats(ColourloversRequestFormat.json.name),
     );
   }
 
   Future<ColourloversStats?> getLoverStats() {
     return _callClient<ColourloversStats, StatsService>(
-      (service) => service.getLoverStats(
-        ColourloversRequestFormat.json.name,
-      ),
+      (service) => service.getLoverStats(ColourloversRequestFormat.json.name),
     );
   }
 
-  Future<ReturnType?>
-      _callClient<ReturnType, ServiceType extends ChopperService>(
-    Future<Response<ReturnType>> Function(ServiceType service) callback,
-  ) async {
+  Future<ReturnType?> _callClient<
+    ReturnType,
+    ServiceType extends ChopperService
+  >(Future<Response<ReturnType>> Function(ServiceType service) callback) async {
     final client = ChopperClient(
       baseUrl: Uri.parse('https://www.colourlovers.com/api'),
       services: [

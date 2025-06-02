@@ -1,58 +1,61 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'pattern.g.dart';
 
 @JsonSerializable()
-class ColourloversPattern {
+@immutable
+class ColourloversPattern extends Equatable {
   /// Unique id for this Pattern
-  int? id;
+  final int? id;
 
   /// Title / Name of the Pattern
-  String? title;
+  final String? title;
 
   /// Username of the Pattern's creator
-  String? userName;
+  final String? userName;
 
   /// Number of views this Pattern has received
-  int? numViews;
+  final int? numViews;
 
   /// Number of votes this Pattern has received
-  int? numVotes;
+  final int? numVotes;
 
   /// Number of comments this Pattern has received
-  int? numComments;
+  final int? numComments;
 
   /// Number of Hearts this Pattern has
-  int? numHearts;
+  final int? numHearts;
 
   /// This Pattern's rank on COLOURlovers.com
-  int? rank;
+  final int? rank;
 
   /// Date this Pattern was created
-  DateTime? dateCreated;
+  final DateTime? dateCreated;
 
   /// List of colors within this Pattern
-  List<String>? colors;
+  final List<String>? colors;
 
   /// This Pattern's description
-  String? description;
+  final String? description;
 
   /// This Pattern's COLOURlovers.com URL
-  String? url;
+  final String? url;
 
   /// Link to a png version of this Pattern
-  String? imageUrl;
+  final String? imageUrl;
 
   /// Link to a COLOURlovers.com badge for this Pattern
-  String? badgeUrl;
+  final String? badgeUrl;
 
   /// This Pattern's COLOURlovers.com API URL
-  String? apiUrl;
+  final String? apiUrl;
 
   ///
-  ColourloversTemplate? template;
+  final ColourloversTemplate? template;
 
-  ColourloversPattern({
+  const ColourloversPattern({
     this.id,
     this.title,
     this.userName,
@@ -77,23 +80,34 @@ class ColourloversPattern {
   Map<String, dynamic> toJson() => _$ColourloversPatternToJson(this);
 
   @override
-  String toString() {
-    return '''
-ColourloversPattern{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl, template: $template}''';
-  }
+  List<Object?> get props => [
+    id,
+    title,
+    userName,
+    numViews,
+    numVotes,
+    numComments,
+    numHearts,
+    rank,
+    dateCreated,
+    colors,
+    description,
+    url,
+    imageUrl,
+    badgeUrl,
+    apiUrl,
+    template,
+  ];
 }
 
 @JsonSerializable()
-class ColourloversTemplate {
-  String? title;
-  String? url;
-  ColourloversAuthor? author;
+@immutable
+class ColourloversTemplate extends Equatable {
+  final String? title;
+  final String? url;
+  final ColourloversAuthor? author;
 
-  ColourloversTemplate({
-    this.title,
-    this.url,
-    this.author,
-  });
+  const ColourloversTemplate({this.title, this.url, this.author});
 
   factory ColourloversTemplate.fromJson(Map<String, dynamic> json) =>
       _$ColourloversTemplateFromJson(json);
@@ -101,20 +115,16 @@ class ColourloversTemplate {
   Map<String, dynamic> toJson() => _$ColourloversTemplateToJson(this);
 
   @override
-  String toString() {
-    return 'Template{title: $title, url: $url, author: $author}';
-  }
+  List<Object?> get props => [title, url, author];
 }
 
 @JsonSerializable()
-class ColourloversAuthor {
-  String? userName;
-  String? url;
+@immutable
+class ColourloversAuthor extends Equatable {
+  final String? userName;
+  final String? url;
 
-  ColourloversAuthor({
-    this.userName,
-    this.url,
-  });
+  const ColourloversAuthor({this.userName, this.url});
 
   factory ColourloversAuthor.fromJson(Map<String, dynamic> json) =>
       _$ColourloversAuthorFromJson(json);
@@ -122,7 +132,5 @@ class ColourloversAuthor {
   Map<String, dynamic> toJson() => _$ColourloversAuthorToJson(this);
 
   @override
-  String toString() {
-    return 'Author{userName: $userName, url: $url}';
-  }
+  List<Object?> get props => [userName, url];
 }

@@ -1,20 +1,8 @@
-enum ColourloversRequestFormat {
-  json,
-  xml,
-}
+enum ColourloversRequestFormat { json, xml }
 
-enum ColourloversRequestOrderBy {
-  dateCreated,
-  score,
-  name,
-  numVotes,
-  numViews,
-}
+enum ColourloversRequestOrderBy { dateCreated, score, name, numVotes, numViews }
 
-enum ColourloversRequestSortBy {
-  ASC,
-  DESC,
-}
+enum ColourloversRequestSortBy { ASC, DESC }
 
 enum ColourloversRequestHueRange {
   red,
@@ -27,7 +15,4 @@ enum ColourloversRequestHueRange {
   fuchsia,
 }
 
-enum ColourloversRequestHexLogic {
-  AND,
-  OR,
-}
+enum ColourloversRequestHexLogic { AND, OR }

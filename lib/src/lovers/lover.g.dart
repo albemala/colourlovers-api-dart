@@ -9,12 +9,14 @@ part of 'lover.dart';
 ColourloversLover _$ColourloversLoverFromJson(Map<String, dynamic> json) =>
     ColourloversLover(
       userName: json['userName'] as String?,
-      dateRegistered: json['dateRegistered'] == null
-          ? null
-          : DateTime.parse(json['dateRegistered'] as String),
-      dateLastActive: json['dateLastActive'] == null
-          ? null
-          : DateTime.parse(json['dateLastActive'] as String),
+      dateRegistered:
+          json['dateRegistered'] == null
+              ? null
+              : DateTime.parse(json['dateRegistered'] as String),
+      dateLastActive:
+          json['dateLastActive'] == null
+              ? null
+              : DateTime.parse(json['dateLastActive'] as String),
       rating: (json['rating'] as num?)?.toInt(),
       location: json['location'] as String?,
       numColors: (json['numColors'] as num?)?.toInt(),

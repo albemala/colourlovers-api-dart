@@ -1,61 +1,64 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'color.g.dart';
 
 @JsonSerializable()
-class ColourloversColor {
+@immutable
+class ColourloversColor extends Equatable {
   /// Unique id for this Color
-  int? id;
+  final int? id;
 
   /// Title / Name of the Color
-  String? title;
+  final String? title;
 
   /// Username of the Color's creator
-  String? userName;
+  final String? userName;
 
   /// Number of views this Color has received
-  int? numViews;
+  final int? numViews;
 
   /// Number of votes this Color has received
-  int? numVotes;
+  final int? numVotes;
 
   /// Number of comments this Color has received
-  int? numComments;
+  final int? numComments;
 
   /// Number of hearts this Color has
-  double? numHearts;
+  final double? numHearts;
 
   /// This Color's rank on COLOURlovers.com
-  int? rank;
+  final int? rank;
 
   /// Date this Color was created
-  DateTime? dateCreated;
+  final DateTime? dateCreated;
 
   /// This Color's hex value
-  String? hex;
+  final String? hex;
 
   /// RGB breakdown of this Color
-  Rgb? rgb;
+  final Rgb? rgb;
 
   /// HSV breakdown of this color
-  Hsv? hsv;
+  final Hsv? hsv;
 
   /// This Color's description
-  String? description;
+  final String? description;
 
   /// This Color's COLOURlovers.com URL
-  String? url;
+  final String? url;
 
   /// Link to a png version of this Color
-  String? imageUrl;
+  final String? imageUrl;
 
   /// Link to a COLOURlovers.com badge for this Color
-  String? badgeUrl;
+  final String? badgeUrl;
 
   /// This Color's COLOURlovers.com API URL
-  String? apiUrl;
+  final String? apiUrl;
 
-  ColourloversColor({
+  const ColourloversColor({
     this.id,
     this.title,
     this.userName,
@@ -81,52 +84,57 @@ class ColourloversColor {
   Map<String, dynamic> toJson() => _$ColourloversColorToJson(this);
 
   @override
-  String toString() {
-    return '''
-ColourloversColor{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, hex: $hex, rgb: $rgb, hsv: $hsv, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}''';
-  }
+  List<Object?> get props => [
+    id,
+    title,
+    userName,
+    numViews,
+    numVotes,
+    numComments,
+    numHearts,
+    rank,
+    dateCreated,
+    hex,
+    rgb,
+    hsv,
+    description,
+    url,
+    imageUrl,
+    badgeUrl,
+    apiUrl,
+  ];
 }
 
 @JsonSerializable()
-class Hsv {
-  int? hue;
-  int? saturation;
-  int? value;
+@immutable
+class Hsv extends Equatable {
+  final int? hue;
+  final int? saturation;
+  final int? value;
 
-  Hsv({
-    this.hue,
-    this.saturation,
-    this.value,
-  });
+  const Hsv({this.hue, this.saturation, this.value});
 
   factory Hsv.fromJson(Map<String, dynamic> json) => _$HsvFromJson(json);
 
   Map<String, dynamic> toJson() => _$HsvToJson(this);
 
   @override
-  String toString() {
-    return 'Hsv{hue: $hue, saturation: $saturation, value: $value}';
-  }
+  List<Object?> get props => [hue, saturation, value];
 }
 
 @JsonSerializable()
-class Rgb {
-  int? red;
-  int? green;
-  int? blue;
+@immutable
+class Rgb extends Equatable {
+  final int? red;
+  final int? green;
+  final int? blue;
 
-  Rgb({
-    this.red,
-    this.green,
-    this.blue,
-  });
+  const Rgb({this.red, this.green, this.blue});
 
   factory Rgb.fromJson(Map<String, dynamic> json) => _$RgbFromJson(json);
 
   Map<String, dynamic> toJson() => _$RgbToJson(this);
 
   @override
-  String toString() {
-    return 'Rgb{red: $red, green: $green, blue: $blue}';
-  }
+  List<Object?> get props => [red, green, blue];
 }

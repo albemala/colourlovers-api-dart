@@ -9,23 +9,17 @@ Future<void> main() async {
   print('---- Colors ----');
   print('----');
 
-  final colors = await client.getColors(
-    numResults: 3,
-  );
+  final colors = await client.getColors(numResults: 3);
   colors?.forEach(print);
 
   print('----');
 
-  final newColors = await client.getNewColors(
-    numResults: 3,
-  );
+  final newColors = await client.getNewColors(numResults: 3);
   newColors?.forEach(print);
 
   print('----');
 
-  final topColors = await client.getTopColors(
-    numResults: 3,
-  );
+  final topColors = await client.getTopColors(numResults: 3);
   topColors?.forEach(print);
 
   print('----');
@@ -42,23 +36,17 @@ Future<void> main() async {
   print('---- Palettes ----');
   print('----');
 
-  final palettes = await client.getPalettes(
-    numResults: 3,
-  );
+  final palettes = await client.getPalettes(numResults: 3);
   palettes?.forEach(print);
 
   print('----');
 
-  final newPalettes = await client.getNewPalettes(
-    numResults: 3,
-  );
+  final newPalettes = await client.getNewPalettes(numResults: 3);
   newPalettes?.forEach(print);
 
   print('----');
 
-  final topPalettes = await client.getTopPalettes(
-    numResults: 3,
-  );
+  final topPalettes = await client.getTopPalettes(numResults: 3);
   topPalettes?.forEach(print);
 
   print('----');
@@ -68,33 +56,24 @@ Future<void> main() async {
 
   print('----');
 
-  final palette = await client.getPalette(
-    id: 113451,
-    showPaletteWidths: true,
-  );
+  final palette = await client.getPalette(id: 113451, showPaletteWidths: true);
   print(palette);
 
   print('----');
   print('---- Patterns ----');
   print('----');
 
-  final patterns = await client.getPatterns(
-    numResults: 3,
-  );
+  final patterns = await client.getPatterns(numResults: 3);
   patterns?.forEach(print);
 
   print('----');
 
-  final newPatterns = await client.getNewPatterns(
-    numResults: 3,
-  );
+  final newPatterns = await client.getNewPatterns(numResults: 3);
   newPatterns?.forEach(print);
 
   print('----');
 
-  final topPatterns = await client.getTopPatterns(
-    numResults: 3,
-  );
+  final topPatterns = await client.getTopPatterns(numResults: 3);
   topPatterns?.forEach(print);
 
   print('----');
@@ -111,23 +90,17 @@ Future<void> main() async {
   print('---- Lovers ----');
   print('----');
 
-  final lovers = await client.getLovers(
-    numResults: 3,
-  );
+  final lovers = await client.getLovers(numResults: 3);
   lovers?.forEach(print);
 
   print('----');
 
-  final newLovers = await client.getNewLovers(
-    numResults: 3,
-  );
+  final newLovers = await client.getNewLovers(numResults: 3);
   newLovers?.forEach(print);
 
   print('----');
 
-  final topLovers = await client.getTopLovers(
-    numResults: 3,
-  );
+  final topLovers = await client.getTopLovers(numResults: 3);
   topLovers?.forEach(print);
 
   print('----');

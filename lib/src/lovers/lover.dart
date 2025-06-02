@@ -1,52 +1,55 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'lover.g.dart';
 
 @JsonSerializable()
-class ColourloversLover {
+@immutable
+class ColourloversLover extends Equatable {
   /// This Lover's Username
-  String? userName;
+  final String? userName;
 
   /// Date this Lover registered with COLOURlovers.com
-  DateTime? dateRegistered;
+  final DateTime? dateRegistered;
 
   /// Date this Lover was last active on COLOURlovers.com
-  DateTime? dateLastActive;
+  final DateTime? dateLastActive;
 
   /// This Lover's rating
-  int? rating;
+  final int? rating;
 
   /// This Lover's location
-  String? location;
+  final String? location;
 
   /// Number of Colors this Lover has made
-  int? numColors;
+  final int? numColors;
 
   /// Number of Palettes this Lover has made
-  int? numPalettes;
+  final int? numPalettes;
 
   /// Number of Patterns this Lover has made
-  int? numPatterns;
+  final int? numPatterns;
 
   /// Number of comments this Lover has made
-  int? numCommentsMade;
+  final int? numCommentsMade;
 
   /// Number of Lovers [friends] this Lover has
-  int? numLovers;
+  final int? numLovers;
 
   /// Number of comments this Lover has on their profile
-  int? numCommentsOnProfile;
+  final int? numCommentsOnProfile;
 
   /// Last 10 comments made on this Lover's profile
-  List<dynamic>? comments;
+  final List<dynamic>? comments;
 
   /// This Lover's COLOURlovers.com URL
-  String? url;
+  final String? url;
 
   /// This Lover's COLOURlovers.com API URL
-  String? apiUrl;
+  final String? apiUrl;
 
-  ColourloversLover({
+  const ColourloversLover({
     this.userName,
     this.dateRegistered,
     this.dateLastActive,
@@ -69,8 +72,20 @@ class ColourloversLover {
   Map<String, dynamic> toJson() => _$ColourloversLoverToJson(this);
 
   @override
-  String toString() {
-    return '''
-ColourloversLover{userName: $userName, dateRegistered: $dateRegistered, dateLastActive: $dateLastActive, rating: $rating, location: $location, numColors: $numColors, numPalettes: $numPalettes, numPatterns: $numPatterns, numCommentsMade: $numCommentsMade, numLovers: $numLovers, numCommentsOnProfile: $numCommentsOnProfile, comments: $comments, url: $url, apiUrl: $apiUrl}''';
-  }
+  List<Object?> get props => [
+    userName,
+    dateRegistered,
+    dateLastActive,
+    rating,
+    location,
+    numColors,
+    numPalettes,
+    numPatterns,
+    numCommentsMade,
+    numLovers,
+    numCommentsOnProfile,
+    comments,
+    url,
+    apiUrl,
+  ];
 }

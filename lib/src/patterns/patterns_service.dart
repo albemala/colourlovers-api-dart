@@ -11,10 +11,8 @@ abstract class PatternsService extends ChopperService {
   static PatternsService create([ChopperClient? client]) =>
       _$PatternsService(client);
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/')
   Future<Response<List<ColourloversPattern>>> getPatterns(
     @Query() String lover,
     @Query() String hueOption,
@@ -29,10 +27,8 @@ abstract class PatternsService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/new')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/new')
   Future<Response<List<ColourloversPattern>>> getNewPatterns(
     @Query() String lover,
     @Query() String hueOption,
@@ -46,10 +42,8 @@ abstract class PatternsService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/top')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/top')
   Future<Response<List<ColourloversPattern>>> getTopPatterns(
     @Query() String lover,
     @Query() String hueOption,
@@ -63,10 +57,8 @@ abstract class PatternsService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseObject,
-  )
-  @Get(path: '/random')
+  @FactoryConverter(response: _convertResponseObject)
+  @GET(path: '/random')
   Future<Response<ColourloversPattern>> getRandomPattern(
     @Query() String format,
   );
@@ -77,10 +69,8 @@ abstract class PatternService extends ChopperService {
   static PatternService create([ChopperClient? client]) =>
       _$PatternService(client);
 
-  @FactoryConverter(
-    response: _convertResponseObject,
-  )
-  @Get(path: '/{id}')
+  @FactoryConverter(response: _convertResponseObject)
+  @GET(path: '/{id}')
   Future<Response<ColourloversPattern>> getPattern(
     @Path() String id,
     @Query() String format,
@@ -90,17 +80,11 @@ abstract class PatternService extends ChopperService {
 Response<ColourloversPattern> _convertResponseObject(
   Response<dynamic> response,
 ) {
-  return convertResponseFirstObject(
-    response,
-    ColourloversPattern.fromJson,
-  );
+  return convertResponseFirstObject(response, ColourloversPattern.fromJson);
 }
 
 Response<List<ColourloversPattern>> _convertResponseList(
   Response<dynamic> response,
 ) {
-  return convertResponseList(
-    response,
-    ColourloversPattern.fromJson,
-  );
+  return convertResponseList(response, ColourloversPattern.fromJson);
 }

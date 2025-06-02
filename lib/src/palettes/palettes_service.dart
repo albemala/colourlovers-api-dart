@@ -11,10 +11,8 @@ abstract class PalettesService extends ChopperService {
   static PalettesService create([ChopperClient? client]) =>
       _$PalettesService(client);
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/')
   Future<Response<List<ColourloversPalette>>> getPalettes(
     @Query() String lover,
     @Query() String hueOption,
@@ -30,10 +28,8 @@ abstract class PalettesService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/new')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/new')
   Future<Response<List<ColourloversPalette>>> getNewPalettes(
     @Query() String lover,
     @Query() String hueOption,
@@ -48,10 +44,8 @@ abstract class PalettesService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/top')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/top')
   Future<Response<List<ColourloversPalette>>> getTopPalettes(
     @Query() String lover,
     @Query() String hueOption,
@@ -66,10 +60,8 @@ abstract class PalettesService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseObject,
-  )
-  @Get(path: '/random')
+  @FactoryConverter(response: _convertResponseObject)
+  @GET(path: '/random')
   Future<Response<ColourloversPalette>> getRandomPalette(
     @Query() String format,
   );
@@ -80,10 +72,8 @@ abstract class PaletteService extends ChopperService {
   static PaletteService create([ChopperClient? client]) =>
       _$PaletteService(client);
 
-  @FactoryConverter(
-    response: _convertResponseObject,
-  )
-  @Get(path: '/{id}')
+  @FactoryConverter(response: _convertResponseObject)
+  @GET(path: '/{id}')
   Future<Response<ColourloversPalette>> getPalette(
     @Path() String id,
     @Query() int showPaletteWidths,
@@ -94,17 +84,11 @@ abstract class PaletteService extends ChopperService {
 Response<ColourloversPalette> _convertResponseObject(
   Response<dynamic> response,
 ) {
-  return convertResponseFirstObject(
-    response,
-    ColourloversPalette.fromJson,
-  );
+  return convertResponseFirstObject(response, ColourloversPalette.fromJson);
 }
 
 Response<List<ColourloversPalette>> _convertResponseList(
   Response<dynamic> response,
 ) {
-  return convertResponseList(
-    response,
-    ColourloversPalette.fromJson,
-  );
+  return convertResponseList(response, ColourloversPalette.fromJson);
 }

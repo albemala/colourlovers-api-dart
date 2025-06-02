@@ -7,9 +7,10 @@ Response<List<T>> convertResponseList<T>(
   T Function(Map<String, dynamic> json) callback,
 ) {
   final jsonList = jsonDecode(response.bodyString) as List<dynamic>;
-  final items = jsonList.map((json) {
-    return callback(json as Map<String, dynamic>);
-  }).toList();
+  final items =
+      jsonList.map((json) {
+        return callback(json as Map<String, dynamic>);
+      }).toList();
   return response.copyWith(body: items);
 }
 

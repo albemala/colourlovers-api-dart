@@ -11,10 +11,8 @@ abstract class LoversService extends ChopperService {
   static LoversService create([ChopperClient? client]) =>
       _$LoversService(client);
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/')
   Future<Response<List<ColourloversLover>>> getLovers(
     @Query() String orderCol,
     @Query() String sortBy,
@@ -23,10 +21,8 @@ abstract class LoversService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/new')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/new')
   Future<Response<List<ColourloversLover>>> getNewLovers(
     @Query() String sortBy,
     @Query() int numResults,
@@ -34,10 +30,8 @@ abstract class LoversService extends ChopperService {
     @Query() String format,
   );
 
-  @FactoryConverter(
-    response: _convertResponseList,
-  )
-  @Get(path: '/top')
+  @FactoryConverter(response: _convertResponseList)
+  @GET(path: '/top')
   Future<Response<List<ColourloversLover>>> getTopLovers(
     @Query() String sortBy,
     @Query() int numResults,
@@ -50,10 +44,8 @@ abstract class LoversService extends ChopperService {
 abstract class LoverService extends ChopperService {
   static LoverService create([ChopperClient? client]) => _$LoverService(client);
 
-  @FactoryConverter(
-    response: _convertResponseObject,
-  )
-  @Get(path: '/{userName}')
+  @FactoryConverter(response: _convertResponseObject)
+  @GET(path: '/{userName}')
   Future<Response<ColourloversLover>> getLover(
     @Path() String userName,
     @Query() int comments,
@@ -61,20 +53,12 @@ abstract class LoverService extends ChopperService {
   );
 }
 
-Response<ColourloversLover> _convertResponseObject(
-  Response<dynamic> response,
-) {
-  return convertResponseFirstObject(
-    response,
-    ColourloversLover.fromJson,
-  );
+Response<ColourloversLover> _convertResponseObject(Response<dynamic> response) {
+  return convertResponseFirstObject(response, ColourloversLover.fromJson);
 }
 
 Response<List<ColourloversLover>> _convertResponseList(
   Response<dynamic> response,
 ) {
-  return convertResponseList(
-    response,
-    ColourloversLover.fromJson,
-  );
+  return convertResponseList(response, ColourloversLover.fromJson);
 }

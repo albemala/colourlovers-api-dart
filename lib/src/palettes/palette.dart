@@ -1,58 +1,61 @@
+import 'package:equatable/equatable.dart';
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'palette.g.dart';
 
 @JsonSerializable()
-class ColourloversPalette {
+@immutable
+class ColourloversPalette extends Equatable {
   /// Unique id for this Palette
-  int? id;
+  final int? id;
 
   /// Title / Name of the Palette
-  String? title;
+  final String? title;
 
   /// Username of the Palette's creator
-  String? userName;
+  final String? userName;
 
   /// Number of views this Palette has received
-  int? numViews;
+  final int? numViews;
 
   /// Number of votes this Palette has received
-  int? numVotes;
+  final int? numVotes;
 
   /// Number of comments this Palette has received
-  int? numComments;
+  final int? numComments;
 
   /// Number of hearts this Palette has
-  double? numHearts;
+  final double? numHearts;
 
   /// This Palette's rank on COLOURlovers.com
-  int? rank;
+  final int? rank;
 
   /// Date this Palette was created
-  DateTime? dateCreated;
+  final DateTime? dateCreated;
 
   /// List of Colors within this Palette
-  List<String>? colors;
+  final List<String>? colors;
 
   /// This Palette's Color's widths. Ranges from 0.0 to 1.0
-  List<double>? colorWidths;
+  final List<double>? colorWidths;
 
   /// This Palette's description
-  String? description;
+  final String? description;
 
   /// This Palette's COLOURlovers.com URL
-  String? url;
+  final String? url;
 
   /// Link to a png version of this Palette
-  String? imageUrl;
+  final String? imageUrl;
 
   /// Link to a COLOURlovers.com badge for this Palette
-  String? badgeUrl;
+  final String? badgeUrl;
 
   /// This Palette's COLOURlovers.com API URL
-  String? apiUrl;
+  final String? apiUrl;
 
-  ColourloversPalette({
+  const ColourloversPalette({
     this.id,
     this.title,
     this.userName,
@@ -77,8 +80,22 @@ class ColourloversPalette {
   Map<String, dynamic> toJson() => _$ColourloversPaletteToJson(this);
 
   @override
-  String toString() {
-    return '''
-ColourloversPalette{id: $id, title: $title, userName: $userName, numViews: $numViews, numVotes: $numVotes, numComments: $numComments, numHearts: $numHearts, rank: $rank, dateCreated: $dateCreated, colors: $colors, description: $description, url: $url, imageUrl: $imageUrl, badgeUrl: $badgeUrl, apiUrl: $apiUrl}''';
-  }
+  List<Object?> get props => [
+    id,
+    title,
+    userName,
+    numViews,
+    numVotes,
+    numComments,
+    numHearts,
+    rank,
+    dateCreated,
+    colors,
+    colorWidths,
+    description,
+    url,
+    imageUrl,
+    badgeUrl,
+    apiUrl,
+  ];
 }

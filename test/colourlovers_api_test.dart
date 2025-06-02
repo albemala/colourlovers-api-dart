@@ -6,9 +6,7 @@ void main() {
 
   group('Colors', () {
     test('getColors', () async {
-      final colors = await client.getColors(
-        numResults: 3,
-      );
+      final colors = await client.getColors(numResults: 3);
       expect(colors, isNotNull);
       expect(colors?.length, 3);
       colors?.forEach((element) {
@@ -16,9 +14,7 @@ void main() {
       });
     });
     test('getNewColors', () async {
-      final colors = await client.getNewColors(
-        numResults: 3,
-      );
+      final colors = await client.getNewColors(numResults: 3);
       expect(colors, isNotNull);
       expect(colors?.length, 3);
       colors?.forEach((element) {
@@ -26,9 +22,7 @@ void main() {
       });
     });
     test('getTopColors', () async {
-      final colors = await client.getTopColors(
-        numResults: 3,
-      );
+      final colors = await client.getTopColors(numResults: 3);
       expect(colors, isNotNull);
       expect(colors?.length, 3);
       colors?.forEach((element) {
@@ -48,9 +42,7 @@ void main() {
   });
   group('Palettes', () {
     test('getPalettes', () async {
-      final palettes = await client.getPalettes(
-        numResults: 3,
-      );
+      final palettes = await client.getPalettes(numResults: 3);
       expect(palettes, isNotNull);
       expect(palettes?.length, 3);
       palettes?.forEach((element) {
@@ -58,9 +50,7 @@ void main() {
       });
     });
     test('getNewPalettes', () async {
-      final palettes = await client.getNewPalettes(
-        numResults: 3,
-      );
+      final palettes = await client.getNewPalettes(numResults: 3);
       expect(palettes, isNotNull);
       expect(palettes?.length, 3);
       palettes?.forEach((element) {
@@ -68,9 +58,7 @@ void main() {
       });
     });
     test('getTopPalettes', () async {
-      final palettes = await client.getTopPalettes(
-        numResults: 3,
-      );
+      final palettes = await client.getTopPalettes(numResults: 3);
       expect(palettes, isNotNull);
       expect(palettes?.length, 3);
       palettes?.forEach((element) {
@@ -93,9 +81,7 @@ void main() {
   });
   group('Patterns', () {
     test('getPatterns', () async {
-      final patterns = await client.getPatterns(
-        numResults: 3,
-      );
+      final patterns = await client.getPatterns(numResults: 3);
       expect(patterns, isNotNull);
       expect(patterns?.length, 3);
       patterns?.forEach((element) {
@@ -103,9 +89,7 @@ void main() {
       });
     });
     test('getNewPatterns', () async {
-      final patterns = await client.getNewPatterns(
-        numResults: 3,
-      );
+      final patterns = await client.getNewPatterns(numResults: 3);
       expect(patterns, isNotNull);
       expect(patterns?.length, 3);
       patterns?.forEach((element) {
@@ -113,9 +97,7 @@ void main() {
       });
     });
     test('getTopPatterns', () async {
-      final patterns = await client.getTopPatterns(
-        numResults: 3,
-      );
+      final patterns = await client.getTopPatterns(numResults: 3);
       expect(patterns, isNotNull);
       expect(patterns?.length, 3);
       patterns?.forEach((element) {
@@ -135,9 +117,7 @@ void main() {
   });
   group('Lovers', () {
     test('getLovers', () async {
-      final lovers = await client.getLovers(
-        numResults: 3,
-      );
+      final lovers = await client.getLovers(numResults: 3);
       expect(lovers, isNotNull);
       expect(lovers?.length, 3);
       lovers?.forEach((element) {
@@ -145,9 +125,7 @@ void main() {
       });
     });
     test('getNewLovers', () async {
-      final lovers = await client.getNewLovers(
-        numResults: 3,
-      );
+      final lovers = await client.getNewLovers(numResults: 3);
       expect(lovers, isNotNull);
       expect(lovers?.length, 3);
       lovers?.forEach((element) {
@@ -155,9 +133,7 @@ void main() {
       });
     });
     test('getTopLovers', () async {
-      final lovers = await client.getTopLovers(
-        numResults: 3,
-      );
+      final lovers = await client.getTopLovers(numResults: 3);
       expect(lovers, isNotNull);
       expect(lovers?.length, 3);
       lovers?.forEach((element) {

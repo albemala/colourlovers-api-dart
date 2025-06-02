@@ -1,3 +1,4 @@
+// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'colors_service.dart';
@@ -156,10 +157,7 @@ final class _$ColorService extends ColorService {
   final Type definitionType = ColorService;
 
   @override
-  Future<Response<ColourloversColor>> getColor(
-    String hex,
-    String format,
-  ) {
+  Future<Response<ColourloversColor>> getColor(String hex, String format) {
     final Uri $url = Uri.parse('/color/${hex}');
     final Map<String, dynamic> $params = <String, dynamic>{'format': format};
     final Request $request = Request(
