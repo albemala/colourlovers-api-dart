@@ -1,6 +1,6 @@
 name: colourlovers_api
-description: A Dart implementation of the COLOURlovers API
-version: 2.0.0
+description: A comprehensive Flutter wrapper for the COLOURlovers.com API, providing access to colors, palettes, patterns, users, and statistics from the popular color community platform.
+version: 2.0.1
 repository: https://github.com/albemala/colourlovers-api-dart
 
 environment:

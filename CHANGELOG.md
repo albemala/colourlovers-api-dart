@@ -1,3 +1,7 @@
+## 2.0.1
+
+- improved package scores
+
 ## 2.0.0
 
 - made all types immutable and equatable

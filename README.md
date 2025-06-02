@@ -2,7 +2,7 @@
 
 [![Pub](https://img.shields.io/pub/v/colourlovers_api)](https://pub.dev/packages/colourlovers_api)
 
-A comprehensive Dart/Flutter wrapper for the [COLOURlovers.com API](http://www.colourlovers.com/api), providing access to colors, palettes, patterns, users, and statistics from the popular color community platform.
+A comprehensive Flutter wrapper for the [COLOURlovers.com API](https://www.colourlovers.com/api), providing access to colors, palettes, patterns, users, and statistics from the popular color community platform.
 
 Perfect for building design apps, color palette generators, creative tools, or any application that needs access to curated color data and community-driven design resources.
 
